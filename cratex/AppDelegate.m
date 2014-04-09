@@ -22,8 +22,15 @@
     [_statusItem setHighlightMode:YES];
 }
 
-- (IBAction)showDetail:(id)sender {
-    [_window makeKeyAndOrderFront:nil];
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
+    [self showDetail:nil];
+    return YES;
 }
+
+- (IBAction)showDetail:(id)sender {
+    [_window setIsVisible:YES];
+    [NSApp activateIgnoringOtherApps:YES];
+}
+
 
 @end
