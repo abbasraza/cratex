@@ -775,6 +775,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addObject:" target="494" id="b6C-X0-Iuf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

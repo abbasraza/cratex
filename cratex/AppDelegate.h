@@ -12,6 +12,7 @@
 
 - (IBAction)showDetail:(id)sender;
 - (IBAction)showWebsite:(id)sender;
+- (IBAction)addObject:(id)sender;
 
 @property (strong) NSStatusItem *statusItem;
 

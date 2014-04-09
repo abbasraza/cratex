@@ -105,4 +105,10 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:kCrateUrl]];
 }
 
+- (IBAction)addObject:(id)sender {
+    NSUInteger indexArr[] = {0,0};
+    
+    [self.clusterController insertObject:[Cluster new] atArrangedObjectIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2]];
+}
+
 @end
