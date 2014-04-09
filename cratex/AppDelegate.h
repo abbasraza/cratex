@@ -10,6 +10,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+- (IBAction)showDetail:(id)sender;
+
 @property (strong) NSStatusItem *statusItem;
 
 @property (assign) IBOutlet NSWindow *window;

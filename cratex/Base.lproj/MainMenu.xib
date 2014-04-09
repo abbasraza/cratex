@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4511" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4511"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -650,7 +650,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="658" height="593"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="658" height="593"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -663,14 +663,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="190" height="593"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-3w-T1e" userLabel="Clusters Menu View">
+                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="20" horizontalPageScroll="10" verticalLineScroll="20" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-3w-T1e" userLabel="Clusters Menu View">
                                         <rect key="frame" x="0.0" y="35" width="190" height="558"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="fF6-wP-Pws">
                                             <rect key="frame" x="0.0" y="0.0" width="190" height="558"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="16" autosaveExpandedItems="YES" outlineTableColumn="1Yz-nE-HiU" id="LFA-BL-OuS">
+                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="16" autosaveExpandedItems="YES" outlineTableColumn="1Yz-nE-HiU" id="LFA-BL-OuS">
                                                     <rect key="frame" x="0.0" y="0.0" width="190" height="558"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="0.0"/>
@@ -739,11 +739,11 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="P4p-qq-O3h">
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="P4p-qq-O3h">
                                             <rect key="frame" x="1" y="119" width="238" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Iky-QH-TQK">
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" id="Iky-QH-TQK">
                                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -808,11 +808,11 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="FuD-o5-Smq"/>
-                <menuItem title="Item 2" id="z4g-8e-JoE">
+                <menuItem title="Details..." id="z4g-8e-JoE">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 3" id="Mo9-EB-4by">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showDetail:" target="494" id="3JK-bw-0Od"/>
+                    </connections>
                 </menuItem>
             </items>
         </menu>

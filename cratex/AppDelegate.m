@@ -15,11 +15,15 @@
     // Insert code here to initialize your application
 }
 
--(void)awakeFromNib{
+-(void)awakeFromNib {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [_statusItem setMenu:_statusMenu];
     [_statusItem setImage:[NSImage imageNamed:@"tray_icon"]];
     [_statusItem setHighlightMode:YES];
+}
+
+- (IBAction)showDetail:(id)sender {
+    [_window makeKeyAndOrderFront:nil];
 }
 
 @end
