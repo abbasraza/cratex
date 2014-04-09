@@ -61,7 +61,7 @@
 
 + (BOOL)autosavesInPlace
 {
-    return YES;
+    return NO;
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
