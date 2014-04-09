@@ -114,6 +114,10 @@
     return [self isHeader:item];
 }
 
+- (BOOL)isDocumentEdited {
+    return NO;
+}
+
 - (void)addData{
     
     // `children` and `isLeaf` have to be configured for the Tree Controller in IB
