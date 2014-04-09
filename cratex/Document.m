@@ -9,6 +9,7 @@
 #import "Document.h"
 #import "Cluster.h"
 #import "cluster/ClusterSettingsViewController.h"
+#import "QueryViewController.h"
 
 @interface Document()
 
@@ -16,6 +17,7 @@
 @property (weak) IBOutlet NSTreeController *clusterController;
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet ClusterSettingsViewController* clusterSettingsViewController;
+@property (weak) IBOutlet QueryViewController *queryViewController;
 @property (weak) IBOutlet NSSplitView* splitView;
 
 -(void)addData;
@@ -55,7 +57,8 @@
     [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
     [self.clusterOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
     
-    [[self.tabView tabViewItemAtIndex:1] setView:[self.clusterSettingsViewController view]];
+    [[self.tabView tabViewItemAtIndex:1] setView:[self.queryViewController view]];
+    [[self.tabView tabViewItemAtIndex:2] setView:[self.clusterSettingsViewController view]];
 
 }
 
