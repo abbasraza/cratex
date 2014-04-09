@@ -72,6 +72,7 @@
 		EB91DF2A18F539FF003CF3DE /* cratexTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cratexTests-Info.plist"; sourceTree = "<group>"; };
 		EB91DF2C18F539FF003CF3DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB91DF2E18F539FF003CF3DE /* cratexTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cratexTests.m; sourceTree = "<group>"; };
+		EBD1AD3B18F5732000E4AAC4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +168,7 @@
 				17EF9EA518F56B7E00BA89C8 /* cluster */,
 				EB91DF1618F539FF003CF3DE /* AppDelegate.h */,
 				EB91DF1718F539FF003CF3DE /* AppDelegate.m */,
+				EBD1AD3B18F5732000E4AAC4 /* Constants.h */,
 				EB91DF1918F539FF003CF3DE /* MainMenu.xib */,
 				EB91DF1C18F539FF003CF3DE /* Images.xcassets */,
 				EB91DF0B18F539FF003CF3DE /* Supporting Files */,

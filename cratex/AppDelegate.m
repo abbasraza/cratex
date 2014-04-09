@@ -44,6 +44,8 @@
     return YES;
 }
 
+# pragma mark - Action handling
+
 - (IBAction)showDetail:(id)sender {
     [_window setIsVisible:YES];
     [NSApp activateIgnoringOtherApps:YES];
@@ -90,6 +92,10 @@
                                   }.mutableCopy;
     
     [self.clusterController addObject:root];
+}
+
+- (IBAction)showWebsite:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:kCrateUrl]];
 }
 
 @end

@@ -11,6 +11,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 - (IBAction)showDetail:(id)sender;
+- (IBAction)showWebsite:(id)sender;
 
 @property (strong) NSStatusItem *statusItem;
 
