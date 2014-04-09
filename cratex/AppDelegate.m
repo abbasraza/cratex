@@ -8,14 +8,14 @@
 
 #import "AppDelegate.h"
 #import "Cluster.h"
-#import "ClusterViewController.h"
+#import "ClusterSettingsViewController.h"
 
 @interface AppDelegate()
 
 @property (weak) IBOutlet NSOutlineView *clusterOutlineView;
 @property (weak) IBOutlet NSTreeController *clusterController;
 @property (weak) IBOutlet NSTabView *tabView;
-@property (weak) IBOutlet ClusterViewController* clusterViewController;
+@property (weak) IBOutlet ClusterSettingsViewController* clusterSettingsViewController;
 @property (weak) IBOutlet NSSplitView* splitView;
 
 @end
@@ -41,10 +41,11 @@
     [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
     [self.clusterOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
     
-    NSView* split = [[self.splitView subviews] objectAtIndex:1];
+    [[self.tabView tabViewItemAtIndex:1] setView:[self.clusterSettingsViewController view]];
+  /*  NSView* split = [[self.splitView subviews] objectAtIndex:1];
     [[self.clusterViewController view] setFrame:CGRectMake(0, 0, split.frame.size.width, split.frame.size.height)];
     [[[self.splitView subviews] objectAtIndex:1] addSubview:[self.clusterViewController view]];
-    self.clusterViewController.view.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
+    self.clusterViewController.view.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;*/
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
