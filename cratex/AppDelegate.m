@@ -18,7 +18,7 @@
 -(void)awakeFromNib{
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [_statusItem setMenu:_statusMenu];
-    [_statusItem setTitle:@"Status"];
+    [_statusItem setImage:[NSImage imageNamed:@"tray_icon"]];
     [_statusItem setHighlightMode:YES];
 }
 
