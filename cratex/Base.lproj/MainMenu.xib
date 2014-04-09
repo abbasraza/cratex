@@ -755,13 +755,23 @@
                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <font key="titleFont" metaFont="system"/>
                                     </box>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F5q-Ya-B9i">
+                                        <rect key="frame" x="1" y="0.0" width="51" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cgD-qa-K3t">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Kv6-dc-qkS" secondAttribute="trailing" id="7bL-di-UxF"/>
+                                    <constraint firstAttribute="bottom" secondItem="F5q-Ya-B9i" secondAttribute="bottom" constant="7" id="AM8-XG-Y8s"/>
                                     <constraint firstItem="Kv6-dc-qkS" firstAttribute="top" secondItem="a1S-3w-T1e" secondAttribute="bottom" id="ATX-D4-cyW"/>
                                     <constraint firstItem="Kv6-dc-qkS" firstAttribute="leading" secondItem="Gqg-Nb-ase" secondAttribute="leading" id="IXU-hF-lxq"/>
                                     <constraint firstItem="a1S-3w-T1e" firstAttribute="top" secondItem="Gqg-Nb-ase" secondAttribute="top" id="JAD-On-qKX"/>
                                     <constraint firstItem="a1S-3w-T1e" firstAttribute="leading" secondItem="Gqg-Nb-ase" secondAttribute="leading" id="POo-pa-bIN"/>
+                                    <constraint firstItem="F5q-Ya-B9i" firstAttribute="leading" secondItem="Gqg-Nb-ase" secondAttribute="leading" constant="7" id="gWR-7N-6Ue"/>
                                     <constraint firstAttribute="trailing" secondItem="a1S-3w-T1e" secondAttribute="trailing" id="jAt-En-Fff"/>
                                     <constraint firstAttribute="bottom" secondItem="a1S-3w-T1e" secondAttribute="bottom" constant="35" id="v1J-Nu-tzl"/>
                                 </constraints>
