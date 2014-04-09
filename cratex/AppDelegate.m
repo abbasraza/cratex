@@ -26,17 +26,16 @@
     self.clusterOutlineView.floatsGroupRows = NO; // Prevent a sticky header
 
     [self addData];
-    
-    // Expand the first group and select the first item in the list
-    [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
-    [self.clusterOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
-}
 
--(void)awakeFromNib {
+    // Add status bar item
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [_statusItem setMenu:_statusMenu];
     [_statusItem setImage:[NSImage imageNamed:@"tray_icon"]];
     [_statusItem setHighlightMode:YES];
+    
+    // Expand the first group and select the first item in the list
+    [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
+    [self.clusterOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
@@ -51,7 +50,7 @@
     [NSApp activateIgnoringOtherApps:YES];
 }
 
-- (BOOL) isHeader:(id)item{
+- (BOOL)isHeader:(id)item{
     
     if([item isKindOfClass:[NSTreeNode class]]){
         return ![((NSTreeNode *)item).representedObject isKindOfClass:[Cluster class]];
@@ -78,9 +77,7 @@
     return [self isHeader:item];
 }
 
-
-
-- (void) addData{
+- (void)addData{
     
     // `children` and `isLeaf` have to be configured for the Tree Controller in IB
     NSMutableDictionary *root = @{@"title": @"CLUSTER",
