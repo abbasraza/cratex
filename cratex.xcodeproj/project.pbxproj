@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EF9EA718F56B9F00BA89C8 /* Cluster.m */; };
 		17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97DE418F5BA9400CF2CC6 /* ClusterSettingsViewController.m */; };
+		17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97E6D18F5CBA900CF2CC6 /* Document.m */; };
+		17F97E7018F5CBA900CF2CC6 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F97E6E18F5CBA900CF2CC6 /* Document.xib */; };
 		6460BB02DAF84C1C93B24A7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B74A8A76064F108D808A9F /* libPods.a */; };
 		EB5D901D18F5597B00410BE7 /* tray_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5D901518F5597B00410BE7 /* tray_icon.png */; };
 		EB5D901E18F5597B00410BE7 /* tray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5D901618F5597B00410BE7 /* tray_icon@2x.png */; };
@@ -47,6 +49,9 @@
 		17EF9EA718F56B9F00BA89C8 /* Cluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cluster.m; sourceTree = "<group>"; };
 		17F97DE318F5BA9400CF2CC6 /* ClusterSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterSettingsViewController.h; sourceTree = "<group>"; };
 		17F97DE418F5BA9400CF2CC6 /* ClusterSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterSettingsViewController.m; sourceTree = "<group>"; };
+		17F97E6C18F5CBA900CF2CC6 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		17F97E6D18F5CBA900CF2CC6 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		17F97E6E18F5CBA900CF2CC6 /* Document.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Document.xib; sourceTree = "<group>"; };
 		B4B74A8A76064F108D808A9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5D901518F5597B00410BE7 /* tray_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tray_icon.png; sourceTree = "<group>"; };
 		EB5D901618F5597B00410BE7 /* tray_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tray_icon@2x.png"; sourceTree = "<group>"; };
@@ -170,6 +175,9 @@
 		EB91DF0A18F539FF003CF3DE /* cratex */ = {
 			isa = PBXGroup;
 			children = (
+				17F97E6C18F5CBA900CF2CC6 /* Document.h */,
+				17F97E6D18F5CBA900CF2CC6 /* Document.m */,
+				17F97E6E18F5CBA900CF2CC6 /* Document.xib */,
 				17EF9EA518F56B7E00BA89C8 /* cluster */,
 				EB91DF1618F539FF003CF3DE /* AppDelegate.h */,
 				EB91DF1718F539FF003CF3DE /* AppDelegate.m */,
@@ -297,6 +305,7 @@
 				EB5D901E18F5597B00410BE7 /* tray_icon@2x.png in Resources */,
 				EB5D901F18F5597B00410BE7 /* tray_icon_g.png in Resources */,
 				EB5D902018F5597B00410BE7 /* tray_icon_g@2x.png in Resources */,
+				17F97E7018F5CBA900CF2CC6 /* Document.xib in Resources */,
 				EB5D902418F5597B00410BE7 /* tray_icon_y@2x.png in Resources */,
 				EB91DF1518F539FF003CF3DE /* Credits.rtf in Resources */,
 				EB5D902318F5597B00410BE7 /* tray_icon_y.png in Resources */,
@@ -356,6 +365,7 @@
 				EB91DF1818F539FF003CF3DE /* AppDelegate.m in Sources */,
 				17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */,
 				17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */,
+				17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */,
 				EB91DF1118F539FF003CF3DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

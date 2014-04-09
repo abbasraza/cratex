@@ -8,11 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>
 
 - (IBAction)showDetail:(id)sender;
 - (IBAction)showWebsite:(id)sender;
-- (IBAction)addObject:(id)sender;
 
 @property (strong) NSStatusItem *statusItem;
 

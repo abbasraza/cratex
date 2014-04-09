@@ -12,40 +12,20 @@
 
 @interface AppDelegate()
 
-@property (weak) IBOutlet NSOutlineView *clusterOutlineView;
-@property (weak) IBOutlet NSTreeController *clusterController;
-@property (weak) IBOutlet NSTabView *tabView;
-@property (weak) IBOutlet ClusterSettingsViewController* clusterSettingsViewController;
-@property (weak) IBOutlet NSSplitView* splitView;
-
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
-    self.clusterOutlineView.delegate = self;
-    self.clusterOutlineView.dataSource = self;
-    self.clusterOutlineView.floatsGroupRows = NO; // Prevent a sticky header
-
-    [self addData];
-
+    
     // Add status bar item
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [_statusItem setMenu:_statusMenu];
     [_statusItem setImage:[NSImage imageNamed:@"tray_icon"]];
     [_statusItem setHighlightMode:YES];
     
-    // Expand the first group and select the first item in the list
-    [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
-    [self.clusterOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
     
-    [[self.tabView tabViewItemAtIndex:1] setView:[self.clusterSettingsViewController view]];
-  /*  NSView* split = [[self.splitView subviews] objectAtIndex:1];
-    [[self.clusterViewController view] setFrame:CGRectMake(0, 0, split.frame.size.width, split.frame.size.height)];
-    [[[self.splitView subviews] objectAtIndex:1] addSubview:[self.clusterViewController view]];
-    self.clusterViewController.view.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;*/
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
@@ -60,55 +40,10 @@
     [NSApp activateIgnoringOtherApps:YES];
 }
 
-- (BOOL)isHeader:(id)item{
-    
-    if([item isKindOfClass:[NSTreeNode class]]){
-        return ![((NSTreeNode *)item).representedObject isKindOfClass:[Cluster class]];
-    } else {
-        return ![item isKindOfClass:[Cluster class]];
-    }
-}
-
-- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    
-    if ([self isHeader:item]) {
-        return [outlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
-    } else {
-        return [outlineView makeViewWithIdentifier:@"DataCell" owner:self];
-    }
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item{
-    return ![self isHeader:item];
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item{
-    // This converts a group to a header which influences its style
-    return [self isHeader:item];
-}
-
-- (void)addData{
-    
-    // `children` and `isLeaf` have to be configured for the Tree Controller in IB
-    NSMutableDictionary *root = @{@"title": @"CLUSTER",
-                                  @"isLeaf": @(NO),
-                                  @"children":@[
-                                          [Cluster clusterWithTitle:@"Localhost" andURL:@"http://localhost:4200/"],
-                                          [Cluster clusterWithTitle:@"Crate Demo Cluster" andURL:@"http://demo.crate.io:4200/"]
-                                          ].mutableCopy
-                                  }.mutableCopy;
-    
-    [self.clusterController addObject:root];
-}
 
 - (IBAction)showWebsite:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:kCrateUrl]];
 }
 
-- (IBAction)addObject:(id)sender {
-    NSUInteger indexArr[] = {0,0};
-    
-    [self.clusterController insertObject:[Cluster new] atArrangedObjectIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2]];
-}
 
 @end
