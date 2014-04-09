@@ -789,9 +789,42 @@
                                     <constraint firstAttribute="bottom" secondItem="a1S-3w-T1e" secondAttribute="bottom" constant="35" id="v1J-Nu-tzl"/>
                                 </constraints>
                             </customView>
-                            <customView fixedFrame="YES" id="x9c-B0-gIW">
+                            <customView id="x9c-B0-gIW">
                                 <rect key="frame" x="192" y="0.0" width="466" height="593"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <tabView appearanceType="aqua" initialItem="R2k-X5-4yC" translatesAutoresizingMaskIntoConstraints="NO" id="XCB-Jn-eCa">
+                                        <rect key="frame" x="-7" y="-10" width="480" height="609"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                        <tabViewItems>
+                                            <tabViewItem label="Overview" identifier="1" id="R2k-X5-4yC">
+                                                <view key="view" id="XL4-gG-WxK">
+                                                    <rect key="frame" x="10" y="33" width="460" height="563"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </tabViewItem>
+                                            <tabViewItem label="Console" identifier="2" id="C8R-Va-BiT">
+                                                <view key="view" id="2PR-CG-hsE">
+                                                    <rect key="frame" x="10" y="33" width="460" height="563"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </tabViewItem>
+                                            <tabViewItem label="Settings" identifier="" id="tJw-mT-vCB">
+                                                <view key="view" id="xfy-8f-X2V">
+                                                    <rect key="frame" x="10" y="33" width="460" height="563"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                            </tabViewItem>
+                                        </tabViewItems>
+                                    </tabView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XCB-Jn-eCa" firstAttribute="top" secondItem="x9c-B0-gIW" secondAttribute="top" id="3ck-K0-lyx"/>
+                                    <constraint firstAttribute="trailing" secondItem="XCB-Jn-eCa" secondAttribute="trailing" id="R4d-qD-kTt"/>
+                                    <constraint firstItem="XCB-Jn-eCa" firstAttribute="leading" secondItem="x9c-B0-gIW" secondAttribute="leading" id="mWW-fD-RAr"/>
+                                    <constraint firstAttribute="bottom" secondItem="XCB-Jn-eCa" secondAttribute="bottom" id="tgR-L8-cWq"/>
+                                </constraints>
                             </customView>
                         </subviews>
                         <holdingPriorities>
@@ -818,6 +851,7 @@
                 <outlet property="clusterController" destination="7Wy-7i-KQ1" id="8TZ-wm-GPH"/>
                 <outlet property="clusterOutlineView" destination="LFA-BL-OuS" id="edo-St-22c"/>
                 <outlet property="statusMenu" destination="UfJ-rw-2u5" id="Pfb-Kj-3lW"/>
+                <outlet property="tabView" destination="XCB-Jn-eCa" id="1Bz-es-g8l"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>

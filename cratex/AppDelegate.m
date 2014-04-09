@@ -13,6 +13,7 @@
 
 @property (weak) IBOutlet NSOutlineView *clusterOutlineView;
 @property (weak) IBOutlet NSTreeController *clusterController;
+@property (weak) IBOutlet NSTabView *tabView;
 
 @end
 
