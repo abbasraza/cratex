@@ -21,6 +21,8 @@
 @property (weak) IBOutlet QueryViewController *queryViewController;
 @property (weak) IBOutlet NSSplitView* splitView;
 
+-(void)sendClusterUpdated;
+
 @end
 
 @implementation Document
@@ -113,10 +115,20 @@
     NSUInteger indexArr[] = {0,[[[[self.clusterController content] objectAtIndex:0] objectForKey:@"children"] count]};
     [self.clusterController insertObject:cluster
                atArrangedObjectIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2]];
+    [self sendClusterUpdated];
+
+}
+
+- (IBAction)removeObjectClicked:(id)sender {
+    [self.clusterController remove:sender];
+    [self sendClusterUpdated];
+}
+
+- (void)sendClusterUpdated {
     [[NSNotificationCenter defaultCenter]
-        postNotificationName:@"clustersUpdated"
-        object:nil
-      userInfo:nil];
+     postNotificationName:@"clustersUpdated"
+     object:nil
+     userInfo:nil];
 }
 
 - (Cluster*)selectedCluster {
