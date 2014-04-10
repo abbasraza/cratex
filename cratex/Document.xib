@@ -121,6 +121,9 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="FWI-T0-fEK"/>
+                                        </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="B4Y-XO-cUA">
                                             <rect key="frame" x="0.0" y="585" width="215.5" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -278,29 +281,30 @@
         <viewController title="QueryViewController" nibName="MainMenu" id="GiH-7c-cIt" customClass="QueryViewController">
             <connections>
                 <outlet property="queryTextView" destination="o6j-9l-8yj" id="TBp-kK-WsT"/>
+                <outlet property="resultTableView" destination="b1i-hB-7na" id="diW-dd-nGv"/>
                 <outlet property="view" destination="OmX-B7-Myx" id="XJY-gA-JEC"/>
             </connections>
         </viewController>
         <customView id="OmX-B7-Myx">
-            <rect key="frame" x="0.0" y="0.0" width="309" height="196"/>
+            <rect key="frame" x="0.0" y="0.0" width="511" height="385"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxl-iL-YDc">
-                    <rect key="frame" x="20" y="44" width="269" height="135"/>
+                <scrollView ambiguous="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxl-iL-YDc">
+                    <rect key="frame" x="20" y="257" width="471" height="111"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <clipView key="contentView" ambiguous="YES" misplaced="YES" id="9ya-kA-k9w">
-                        <rect key="frame" x="1" y="1" width="267" height="133"/>
+                        <rect key="frame" x="1" y="1" width="469" height="109"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="o6j-9l-8yj">
-                                <rect key="frame" x="0.0" y="0.0" width="267" height="133"/>
+                                <rect key="frame" x="0.0" y="0.0" width="469" height="109"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="267" height="133"/>
-                                <size key="maxSize" width="463" height="10000000"/>
+                                <size key="minSize" width="469" height="109"/>
+                                <size key="maxSize" width="497" height="10000000"/>
                                 <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="267" height="133"/>
-                                <size key="maxSize" width="463" height="10000000"/>
+                                <size key="minSize" width="469" height="109"/>
+                                <size key="maxSize" width="497" height="10000000"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -310,12 +314,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" id="73Y-QK-YUX">
-                        <rect key="frame" x="252" y="1" width="16" height="133"/>
+                        <rect key="frame" x="454" y="1" width="16" height="109"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1WP-Vs-QJg">
-                    <rect key="frame" x="185" y="19" width="104" height="17"/>
+                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1WP-Vs-QJg">
+                    <rect key="frame" x="387" y="232" width="104" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="recessed" title="Execute Query" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="elp-rd-GqP">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -325,7 +329,46 @@
                         <action selector="executeQuery:" target="GiH-7c-cIt" id="ooF-VL-cbm"/>
                     </connections>
                 </button>
+                <scrollView canDrawConcurrently="YES" ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-FF-7ex">
+                    <rect key="frame" x="20" y="20" width="471" height="205"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <clipView key="contentView" ambiguous="YES" misplaced="YES" id="9Wj-iF-Gd9">
+                        <rect key="frame" x="1" y="17" width="469" height="187"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="84H-I9-2zI" id="b1i-hB-7na">
+                                <rect key="frame" x="0.0" y="0.0" width="469" height="187"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="vrh-Y1-zCt">
+                        <rect key="frame" x="1" y="1" width="0.0" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" id="ldp-6i-X0Y">
+                        <rect key="frame" x="454" y="17" width="16" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <tableHeaderView key="headerView" id="84H-I9-2zI">
+                        <rect key="frame" x="0.0" y="0.0" width="469" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tableHeaderView>
+                </scrollView>
             </subviews>
+            <constraints>
+                <constraint firstItem="Nxl-iL-YDc" firstAttribute="leading" secondItem="OmX-B7-Myx" secondAttribute="leading" constant="20" id="3Zw-pa-oug"/>
+                <constraint firstAttribute="trailing" secondItem="yUc-FF-7ex" secondAttribute="trailing" constant="20" id="3dB-x3-O7f"/>
+                <constraint firstAttribute="trailing" secondItem="1WP-Vs-QJg" secondAttribute="trailing" constant="20" id="7zV-38-xsu"/>
+                <constraint firstItem="yUc-FF-7ex" firstAttribute="top" secondItem="1WP-Vs-QJg" secondAttribute="bottom" constant="8" id="B91-iA-fHw"/>
+                <constraint firstAttribute="trailing" secondItem="Nxl-iL-YDc" secondAttribute="trailing" constant="20" id="Yl2-ZX-RsX"/>
+                <constraint firstItem="yUc-FF-7ex" firstAttribute="leading" secondItem="OmX-B7-Myx" secondAttribute="leading" constant="20" id="oYn-FA-T88"/>
+                <constraint firstAttribute="bottom" secondItem="yUc-FF-7ex" secondAttribute="bottom" constant="20" id="uGw-0Y-jMH"/>
+            </constraints>
         </customView>
     </objects>
     <resources>

@@ -28,6 +28,10 @@
 }
 
 - (void)sql:(NSString *)query {
+    if ([query length] == 0) {
+        return;
+    }
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:@"http://localhost:4200/_sql"]];
     [request setHTTPMethod:@"POST"];
@@ -42,11 +46,16 @@
                                        queue:queue completionHandler:^(NSURLResponse *response,
                                                                        NSData *data,
                                                                        NSError *connectionError) {
+                                           if (!data) {
+                                               return;
+                                           };
+                                           
                                            NSError *error = nil;
-                                           NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                           [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                                           self.results = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                           
+                                           [_results enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
                                                if ([key isEqualToString:@"cols"]) {
-                                                   NSLog(@"%@", obj);
+                                                   [self updateTableColumns:obj];
                                                }
                                                else if ([key isEqualToString:@"rows"]) {
                                                    NSLog(@"%@", obj);
@@ -57,8 +66,27 @@
                                                else if ([key isEqualToString:@"duration"]) {
                                                    NSLog(@"%@", obj);
                                                }
+                                               else if ([key isEqualToString:@"error"]) {
+                                               }
                                            }];
                                        }];
+}
+
+- (void)updateTableColumns:(NSArray *)cols {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Remove all columns from the table view
+        [[_resultTableView tableColumns] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [_resultTableView removeTableColumn:obj];
+        }];
+       
+        // Add columns depending on the fetch result
+        [cols enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"obj"];
+            [[column headerCell] setStringValue:obj];
+            [_resultTableView addTableColumn:column];
+        }];
+        [_resultTableView reloadData];
+    });
 }
 
 @end

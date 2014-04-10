@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface QueryViewController : NSViewController
+@interface QueryViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (assign) IBOutlet NSTextView *queryTextView;
+@property (assign) IBOutlet NSTableView *resultTableView;
+
+@property (strong, nonatomic) NSDictionary *results;
 
 - (IBAction)executeQuery:(id)sender;
 
