@@ -33,6 +33,7 @@
 		EB91DF2D18F539FF003CF3DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB91DF2B18F539FF003CF3DE /* InfoPlist.strings */; };
 		EB91DF2F18F539FF003CF3DE /* cratexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB91DF2E18F539FF003CF3DE /* cratexTests.m */; };
 		EBFF001B18F6BE4B00565CAF /* NSFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */; };
+		EBFF001E18F6D43500565CAF /* BlenderPro-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBFF001D18F6D43500565CAF /* BlenderPro-Thin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		EBD1AD3B18F5732000E4AAC4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EBFF001918F6BE4B00565CAF /* NSFont+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFont+Additions.h"; sourceTree = "<group>"; };
 		EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+Additions.m"; sourceTree = "<group>"; };
+		EBFF001D18F6D43500565CAF /* BlenderPro-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlenderPro-Thin.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 		EB91DF0B18F539FF003CF3DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBFF001C18F6D43500565CAF /* Fonts */,
 				EB5D901418F5597B00410BE7 /* Images */,
 				EB91DF0C18F539FF003CF3DE /* cratex-Info.plist */,
 				EB91DF0D18F539FF003CF3DE /* InfoPlist.strings */,
@@ -244,6 +247,14 @@
 				EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */,
 			);
 			path = Additions;
+			sourceTree = "<group>";
+		};
+		EBFF001C18F6D43500565CAF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EBFF001D18F6D43500565CAF /* BlenderPro-Thin.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +338,7 @@
 				EB5D901D18F5597B00410BE7 /* tray_icon.png in Resources */,
 				EB91DF0F18F539FF003CF3DE /* InfoPlist.strings in Resources */,
 				EB91DF1D18F539FF003CF3DE /* Images.xcassets in Resources */,
+				EBFF001E18F6D43500565CAF /* BlenderPro-Thin.otf in Resources */,
 				EB5D902118F5597B00410BE7 /* tray_icon_r.png in Resources */,
 				EB5D901E18F5597B00410BE7 /* tray_icon@2x.png in Resources */,
 				EB5D901F18F5597B00410BE7 /* tray_icon_g.png in Resources */,

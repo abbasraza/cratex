@@ -11,5 +11,6 @@
 @interface NSFont (Additions)
 
 + (NSFont *)defaultTableViewFontWithSize:(CGFloat)size;
++ (NSFont *)defaultLightFontWithSize:(CGFloat)size;
 
 @end

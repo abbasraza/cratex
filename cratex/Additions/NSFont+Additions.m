@@ -14,4 +14,8 @@
     return [NSFont systemFontOfSize:size];
 }
 
++ (NSFont *)defaultLightFontWithSize:(CGFloat)size {
+    return [NSFont fontWithName:@"BlenderPro-Thin" size:size];
+}
+
 @end
