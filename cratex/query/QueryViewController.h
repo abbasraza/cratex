@@ -14,6 +14,7 @@
 @property IBOutlet NSTextView *queryTextView;
 @property IBOutlet NSTableView *resultTableView;
 @property IBOutlet NSButton *queryButton;
+@property IBOutlet NSTextField *logTextField;
 @property IBOutlet Document *document;
 
 @property (strong, nonatomic) NSDictionary *results;

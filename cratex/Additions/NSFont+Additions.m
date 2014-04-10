@@ -11,7 +11,7 @@
 @implementation NSFont (Additions)
 
 + (NSFont *)defaultTableViewFontWithSize:(CGFloat)size {
-    return [NSFont systemFontOfSize:size];
+    return [NSFont fontWithName:@"BlenderPro-Thin" size:size];
 }
 
 + (NSFont *)defaultLightFontWithSize:(CGFloat)size {

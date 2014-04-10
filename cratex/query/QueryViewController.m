@@ -7,7 +7,7 @@
 //
 
 #define kMinCellHeight 40
-#define kQueryResultFontSize 12
+#define kQueryResultFontSize 16
 
 #import "QueryViewController.h"
 #import "NSFont+Additions.h"
