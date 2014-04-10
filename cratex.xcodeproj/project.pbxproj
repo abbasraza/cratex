@@ -32,6 +32,7 @@
 		EB91DF2518F539FF003CF3DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB91DF0418F539FF003CF3DE /* Cocoa.framework */; };
 		EB91DF2D18F539FF003CF3DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB91DF2B18F539FF003CF3DE /* InfoPlist.strings */; };
 		EB91DF2F18F539FF003CF3DE /* cratexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB91DF2E18F539FF003CF3DE /* cratexTests.m */; };
+		EBFF001B18F6BE4B00565CAF /* NSFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		EB91DF2C18F539FF003CF3DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB91DF2E18F539FF003CF3DE /* cratexTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cratexTests.m; sourceTree = "<group>"; };
 		EBD1AD3B18F5732000E4AAC4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		EBFF001918F6BE4B00565CAF /* NSFont+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFont+Additions.h"; sourceTree = "<group>"; };
+		EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,7 @@
 		EB91DF0A18F539FF003CF3DE /* cratex */ = {
 			isa = PBXGroup;
 			children = (
+				EBFF001818F6BE2800565CAF /* Additions */,
 				EB5A37EF18F5F267003169EA /* query */,
 				17F97E6C18F5CBA900CF2CC6 /* Document.h */,
 				17F97E6D18F5CBA900CF2CC6 /* Document.m */,
@@ -231,6 +235,15 @@
 				EB91DF2B18F539FF003CF3DE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBFF001818F6BE2800565CAF /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				EBFF001918F6BE4B00565CAF /* NSFont+Additions.h */,
+				EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */,
+			);
+			path = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +392,7 @@
 				17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */,
 				17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */,
 				17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */,
+				EBFF001B18F6BE4B00565CAF /* NSFont+Additions.m in Sources */,
 				EB91DF1118F539FF003CF3DE /* main.m in Sources */,
 				EB5A37F218F5F29B003169EA /* QueryViewController.m in Sources */,
 			);

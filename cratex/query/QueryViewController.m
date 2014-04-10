@@ -6,7 +6,11 @@
 //  Copyright (c) 2014 CRATE Technology GmbH. All rights reserved.
 //
 
+#define kMinCellHeight 40
+#define kQueryResultFontSize 12
+
 #import "QueryViewController.h"
+#import "NSFont+Additions.h"
 
 @interface QueryViewController ()
 
@@ -87,6 +91,7 @@
         // Add columns depending on the fetch result
         [cols enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"obj"];
+            [column setWidth:[self maxWidthForIndex:idx forColumn:column]];
             [[column headerCell] setStringValue:obj];
             [column setIdentifier:[NSString stringWithFormat:@"%lu", (unsigned long)idx]];
             [_resultTableView addTableColumn:column];
@@ -95,24 +100,49 @@
     });
 }
 
+- (CGFloat)maxWidthForIndex:(NSUInteger)index forColumn:(NSTableColumn *)column {
+    // Calculate the width for the column at the given index
+    CGFloat __block width = column.width;
+    [[_results objectForKey:@"rows"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *text = [obj[index] description];
+        NSDictionary *attributes = @{NSFontAttributeName:[NSFont defaultTableViewFontWithSize:kQueryResultFontSize]};
+        CGSize size = [text sizeWithAttributes:attributes];
+        if (size.width > width) {
+            width = size.width + 10.0;
+        }
+    }];
+    return width;
+}
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [[_results objectForKey:@"rows"] count];
 }
 
-- (NSView *)tableView:(NSTableView *)tableView
-   viewForTableColumn:(NSTableColumn *)tableColumn
-                  row:(NSInteger)row {
-    
-    NSTextField *result = [tableView makeViewWithIdentifier:@"ResultView" owner:self];
-    if (result == nil) {
-        result = [[NSTextField alloc] initWithFrame:CGRectMake(0.0, 0.0, tableColumn.width, 40.0)];
-        result.identifier = @"ResultView";
-    }
-    result.stringValue = [[[_results objectForKey:@"rows"]
-                           objectAtIndex:row]
-                          objectAtIndex:[[tableColumn identifier] intValue]];
-    return result;
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    // Calculate the height for the given row
+    CGFloat __block height = kMinCellHeight;
+    [[[_results objectForKey:@"rows"] objectAtIndex:row] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary *attributes = @{NSFontAttributeName:[NSFont defaultTableViewFontWithSize:kQueryResultFontSize]};
+        CGSize size = [[obj description] sizeWithAttributes:attributes];
+        if (size.height > height) {
+            height = size.height + 10.0;
+        }
+    }];
+    return height;
 }
 
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSTextField *result = [tableView makeViewWithIdentifier:@"ResultView" owner:self];
+    if (result == nil) {
+        result = [[NSTextField alloc] initWithFrame:CGRectMake(0.0, 0.0, tableColumn.width, 0.0)];
+        result.identifier = @"ResultView";
+        [result setFont:[NSFont defaultTableViewFontWithSize:kQueryResultFontSize]];
+    }
+    result.stringValue = [[[[_results objectForKey:@"rows"]
+                            objectAtIndex:row]
+                           objectAtIndex:[[tableColumn identifier] intValue]]
+                          description];
+    return result;
+}
 
 @end
