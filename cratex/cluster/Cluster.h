@@ -16,4 +16,8 @@
 
 +(Cluster*)clusterWithTitle:(NSString*)title andURL:(NSString*)url;
 
+typedef void (^CompletionBlock)(BOOL success, NSDictionary *response, NSError *error);
+
+- (void)sql:(NSString *)query withCallback:(CompletionBlock)callback;
+
 @end
