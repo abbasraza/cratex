@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "Document.h"
 
-@interface QueryViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+@interface QueryViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSTextViewDelegate>
 
 @property IBOutlet NSTextView *queryTextView;
 @property IBOutlet NSTableView *resultTableView;

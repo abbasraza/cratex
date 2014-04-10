@@ -33,6 +33,7 @@
 		EB91DF2518F539FF003CF3DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB91DF0418F539FF003CF3DE /* Cocoa.framework */; };
 		EB91DF2D18F539FF003CF3DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB91DF2B18F539FF003CF3DE /* InfoPlist.strings */; };
 		EB91DF2F18F539FF003CF3DE /* cratexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB91DF2E18F539FF003CF3DE /* cratexTests.m */; };
+		EBC5EECF18F6FD0E00548180 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC5EECE18F6FD0E00548180 /* NSString+Additions.m */; };
 		EBFF001B18F6BE4B00565CAF /* NSFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */; };
 		EBFF001E18F6D43500565CAF /* BlenderPro-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBFF001D18F6D43500565CAF /* BlenderPro-Thin.otf */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,8 @@
 		EB91DF2A18F539FF003CF3DE /* cratexTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cratexTests-Info.plist"; sourceTree = "<group>"; };
 		EB91DF2C18F539FF003CF3DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB91DF2E18F539FF003CF3DE /* cratexTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cratexTests.m; sourceTree = "<group>"; };
+		EBC5EECD18F6FD0E00548180 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		EBC5EECE18F6FD0E00548180 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		EBD1AD3B18F5732000E4AAC4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EBFF001918F6BE4B00565CAF /* NSFont+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFont+Additions.h"; sourceTree = "<group>"; };
 		EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+Additions.m"; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 			children = (
 				EBFF001918F6BE4B00565CAF /* NSFont+Additions.h */,
 				EBFF001A18F6BE4B00565CAF /* NSFont+Additions.m */,
+				EBC5EECD18F6FD0E00548180 /* NSString+Additions.h */,
+				EBC5EECE18F6FD0E00548180 /* NSString+Additions.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 			files = (
 				EB91DF1818F539FF003CF3DE /* AppDelegate.m in Sources */,
 				17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */,
+				EBC5EECF18F6FD0E00548180 /* NSString+Additions.m in Sources */,
 				1736388F18F6E3BA00470BA7 /* CLusterOverviewViewController.m in Sources */,
 				17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */,
 				17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */,

@@ -11,6 +11,7 @@
 
 #import "QueryViewController.h"
 #import "NSFont+Additions.h"
+#import "NSString+Additions.h"
 
 @interface QueryViewController ()
 
@@ -29,13 +30,32 @@
 
 - (void)awakeFromNib {
     _resultTableView.delegate = self;
+    _queryTextView.delegate = self;
     _resultTableView.dataSource = self;
     [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
 }
 
+- (BOOL)textView:(NSTextView *)aTextView doCommandBySelector:(SEL)aSelector {
+    BOOL result = NO;
+    
+    if (aSelector == @selector(insertNewline:))
+    {
+        //[aTextView insertNewlineIgnoringFieldEditor:self];
+        if ([_queryTextView.string endsWithSemicolon]) {
+            [self executeQuery:nil];
+            return YES;
+        }
+        
+    }
+    
+    return result;
+}
+
+
 - (IBAction)executeQuery:(id)sender {
     
-    [_document.selectedCluster sql:_queryTextView.string withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
+    NSString *queryString = [_queryTextView.string formatForSQLQuery];
+    [_document.selectedCluster sql:queryString withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
        [response enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
            if ([key isEqualToString:@"cols"]) {
                self.results = response;
