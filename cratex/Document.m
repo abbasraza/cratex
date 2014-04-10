@@ -116,6 +116,7 @@
 - (IBAction)addObjectClicked:(id)sender {
     Cluster* cluster = [Cluster new];    
     NSUInteger indexArr[] = {0,[[[[self.clusterController content] objectAtIndex:0] objectForKey:@"children"] count]};
+    [self.tabView selectLastTabViewItem:nil];
     [self.clusterController insertObject:cluster
                atArrangedObjectIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2]];
     [self sendClusterUpdated];

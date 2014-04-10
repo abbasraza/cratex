@@ -10,6 +10,8 @@
 
 @interface ClusterSettingsViewController ()
 
+@property(nonatomic)IBOutlet NSTextField* nameField;
+
 @end
 
 @implementation ClusterSettingsViewController
@@ -22,6 +24,7 @@
     }
     return self;
 }
+
 
 -(void)controlTextDidEndEditing:(NSNotification *)obj {
     [[NSNotificationCenter defaultCenter]

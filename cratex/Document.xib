@@ -242,14 +242,14 @@
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
             </connections>
         </window>
-        <customView id="ySI-Bp-drO">
+        <customView id="ySI-Bp-drO" userLabel="Settings View">
             <rect key="frame" x="0.0" y="0.0" width="500" height="174"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXU-ew-BKW">
                     <rect key="frame" x="71" y="132" width="409" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="VRY-rD-VIU">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Cluster Name" drawsBackground="YES" id="VRY-rD-VIU">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -271,7 +271,7 @@
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esy-7c-B9v">
                     <rect key="frame" x="71" y="102" width="409" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xSl-vP-iRq">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Cluster url" drawsBackground="YES" id="xSl-vP-iRq">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -294,6 +294,7 @@
         </customView>
         <viewController nibName="MainMenu" id="L9L-Bu-Ej0" customClass="ClusterSettingsViewController">
             <connections>
+                <outlet property="nameField" destination="VXU-ew-BKW" id="9Hz-hy-kmd"/>
                 <outlet property="view" destination="ySI-Bp-drO" id="F0C-wW-QKy"/>
             </connections>
         </viewController>
@@ -404,7 +405,7 @@ DQ
                 <outlet property="view" destination="Rbt-s4-Sob" id="2eN-VZ-iK3"/>
             </connections>
         </viewController>
-        <customView id="Rbt-s4-Sob">
+        <customView id="Rbt-s4-Sob" userLabel="Overview View">
             <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
