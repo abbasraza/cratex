@@ -10,6 +10,6 @@
 
 @interface Document : NSDocument <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
-- (IBAction)addObject:(id)sender;
+- (IBAction)addObjectClicked:(id)sender;
 
 @end
