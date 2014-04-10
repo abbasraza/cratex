@@ -10,8 +10,9 @@
 
 @interface QueryViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
-@property (assign) IBOutlet NSTextView *queryTextView;
-@property (assign) IBOutlet NSTableView *resultTableView;
+@property IBOutlet NSTextView *queryTextView;
+@property IBOutlet NSTableView *resultTableView;
+@property IBOutlet NSButton *queryButton;
 
 @property (strong, nonatomic) NSDictionary *results;
 

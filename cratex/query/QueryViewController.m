@@ -31,6 +31,7 @@
     _resultTableView.delegate = self;
     _resultTableView.dataSource = self;
     [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
+    [_queryButton setKeyEquivalent:@"\r"];
 }
 
 - (IBAction)executeQuery:(id)sender {
