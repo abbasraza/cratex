@@ -30,6 +30,7 @@
 - (void)awakeFromNib {
     _resultTableView.delegate = self;
     _resultTableView.dataSource = self;
+    [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
 }
 
 - (IBAction)executeQuery:(id)sender {
@@ -84,7 +85,7 @@
 - (void)updateTableColumns:(NSArray *)cols {
     dispatch_async(dispatch_get_main_queue(), ^{
         // Remove all columns from the table view
-        [[_resultTableView tableColumns] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [[[_resultTableView tableColumns] copy] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [_resultTableView removeTableColumn:obj];
         }];
        
