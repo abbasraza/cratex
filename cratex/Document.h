@@ -12,6 +12,7 @@
 @interface Document : NSDocument <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 - (IBAction)addObjectClicked:(id)sender;
+- (IBAction)removeObjectClicked:(id)sender;
 - (Cluster*)selectedCluster;
 
 @end
