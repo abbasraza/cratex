@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1736388F18F6E3BA00470BA7 /* CLusterOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1736388E18F6E3BA00470BA7 /* CLusterOverviewViewController.m */; };
 		17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EF9EA718F56B9F00BA89C8 /* Cluster.m */; };
 		17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97DE418F5BA9400CF2CC6 /* ClusterSettingsViewController.m */; };
 		17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97E6D18F5CBA900CF2CC6 /* Document.m */; };
@@ -48,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		11360EC9E8EC47729D1AB0EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		1736388D18F6E3BA00470BA7 /* CLusterOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLusterOverviewViewController.h; sourceTree = "<group>"; };
+		1736388E18F6E3BA00470BA7 /* CLusterOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLusterOverviewViewController.m; sourceTree = "<group>"; };
 		17EF9EA618F56B9F00BA89C8 /* Cluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cluster.h; sourceTree = "<group>"; };
 		17EF9EA718F56B9F00BA89C8 /* Cluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cluster.m; sourceTree = "<group>"; };
 		17F97DE318F5BA9400CF2CC6 /* ClusterSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterSettingsViewController.h; sourceTree = "<group>"; };
@@ -113,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1736388C18F6E3A700470BA7 /* overview */ = {
+			isa = PBXGroup;
+			children = (
+				1736388D18F6E3BA00470BA7 /* CLusterOverviewViewController.h */,
+				1736388E18F6E3BA00470BA7 /* CLusterOverviewViewController.m */,
+			);
+			path = overview;
+			sourceTree = "<group>";
+		};
 		17EF9EA518F56B7E00BA89C8 /* cluster */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +204,7 @@
 		EB91DF0A18F539FF003CF3DE /* cratex */ = {
 			isa = PBXGroup;
 			children = (
+				1736388C18F6E3A700470BA7 /* overview */,
 				EBFF001818F6BE2800565CAF /* Additions */,
 				EB5A37EF18F5F267003169EA /* query */,
 				17F97E6C18F5CBA900CF2CC6 /* Document.h */,
@@ -402,6 +415,7 @@
 			files = (
 				EB91DF1818F539FF003CF3DE /* AppDelegate.m in Sources */,
 				17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */,
+				1736388F18F6E3BA00470BA7 /* CLusterOverviewViewController.m in Sources */,
 				17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */,
 				17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */,
 				EBFF001B18F6BE4B00565CAF /* NSFont+Additions.m in Sources */,
