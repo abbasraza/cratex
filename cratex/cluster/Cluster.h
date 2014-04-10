@@ -14,10 +14,20 @@
 @property(copy)NSString* url;
 @property(readonly)BOOL isLeaf;
 
+@property(copy)NSString* state;
+@property(copy)NSArray* tables;
+@property(copy)NSNumber* activePrimary;
+@property(copy)NSNumber* unassigned;
+@property(copy)NSNumber* configured;
+@property(copy)NSNumber* missing;
+
+@property(copy)NSArray* shardInfo;
+
 +(Cluster*)clusterWithTitle:(NSString*)title andURL:(NSString*)url;
 
 typedef void (^CompletionBlock)(BOOL success, NSDictionary *response, NSError *error);
 
 - (void)sql:(NSString *)query withCallback:(CompletionBlock)callback;
+- (NSArray*)convertSQLResult:(NSDictionary*)result fields:(NSArray*)fields;
 
 @end

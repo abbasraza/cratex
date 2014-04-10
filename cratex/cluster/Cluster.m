@@ -11,6 +11,7 @@
         cluster.title = title;
         cluster.url = url;
     }
+    [cluster fetchOverView];
     return cluster;
 }
 
@@ -19,6 +20,7 @@
     if (self) {
         self.title = [aDecoder decodeObjectForKey:@"title"];
         self.url = [aDecoder decodeObjectForKey:@"url"];
+        [self fetchOverView];
     }
     return self;
 }
@@ -60,6 +62,68 @@
                                            callback(YES, results, error);
                                        }];
     
+}
+
+- (void)fetchOverView {
+    [self fetchHealth];
+}
+
+- (NSArray*)convertSQLResult:(NSDictionary *)result fields:(NSArray *)fields {
+    NSArray* rows = [result objectForKey:@"rows"];
+    NSMutableArray* converted = [[NSMutableArray alloc] init];
+    [rows enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary* row = [NSDictionary dictionaryWithObjects:obj forKeys:fields];
+        [converted addObject:row];
+    }];
+    return converted;
+}
+
+- (void)fetchHealth {
+    NSString* tableQuery = @"select table_name, sum(number_of_shards), number_of_replicas \
+                                from information_schema.tables \
+                                where schema_name in ('doc', 'blob') \
+                                group by table_name, number_of_replicas";
+    [self sql:tableQuery withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
+        
+        self.tables = [self convertSQLResult:response fields:@[@"table_name", @"number_of_shards", @"number_of_replicas"]];
+        NSString* shardQuery = @"select table_name, count(*), 'primary', state, sum(num_docs), \
+                                    avg(num_docs), sum(size) \
+                                    from sys.shards group by table_name, 'primary', state";
+        
+        [self sql:shardQuery withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
+            NSArray* shardInfo = [self convertSQLResult:response fields:@[@"name", @"count", @"primary", @"state", @"sum_docs", @"avg_docs", @"size"]];
+            NSLog(@"shard info %@", shardInfo);
+            self.shardInfo = shardInfo;
+            
+            // Calculate Active Primary
+            int __block active = 0;
+            int __block unassigend = 0;
+            int __block configured = 0;
+            [self.shardInfo enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSString* state = [[obj objectForKey:@"state"] lowercaseString];
+                BOOL isPrimary = [[obj objectForKey:@"primary"] isEqualToString:@"primary"];
+                
+                if([@[@"started", @"relocating"] containsObject:state] && isPrimary){
+                    active+=1;
+                } else if([state isEqualToString:@"unassigned"]){
+                    unassigend += 1;
+                }
+                configured += [[obj objectForKey:@"number_of_shards"] integerValue];
+                
+            }];
+            self.activePrimary = [NSNumber numberWithInt:active];
+            self.unassigned = [NSNumber numberWithInt:unassigend];
+            self.configured = [NSNumber numberWithInt:configured];
+            if(active < configured){
+                self.state = @"red";
+            } else if (unassigend > 0){
+                self.state = @"warning";
+            } else {
+                self.state = @"good";
+            }
+            NSLog(@"active primary %@", self.activePrimary);
+        }];
+    }];
 }
 
 @end
