@@ -7,12 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Document.h"
 
 @interface QueryViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property IBOutlet NSTextView *queryTextView;
 @property IBOutlet NSTableView *resultTableView;
 @property IBOutlet NSButton *queryButton;
+@property IBOutlet Document *document;
 
 @property (strong, nonatomic) NSDictionary *results;
 

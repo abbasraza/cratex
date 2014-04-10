@@ -32,4 +32,34 @@
     return YES;
 }
 
+- (void)sql:(NSString *)query withCallback:(CompletionBlock)callback {
+    if ([query length] == 0) {
+        return;
+    }
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/_sql", _url]]];
+    [request setHTTPMethod:@"POST"];
+    [request addValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField: @"Content-Type"];
+    
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"{\"stmt\":\"%@\"}", query] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:postBody];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue completionHandler:^(NSURLResponse *response,
+                                                                       NSData *data,
+                                                                       NSError *connectionError) {
+                                           if (!data) {
+                                               return;
+                                           };
+                                           
+                                           NSError *error = nil;
+                                           NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                           callback(YES, results, error);
+                                       }];
+    
+}
+
 @end

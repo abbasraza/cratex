@@ -31,56 +31,18 @@
     _resultTableView.delegate = self;
     _resultTableView.dataSource = self;
     [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
-    [_queryButton setKeyEquivalent:@"\r"];
 }
 
 - (IBAction)executeQuery:(id)sender {
-    [self sql:_queryTextView.string];
-}
-
-- (void)sql:(NSString *)query {
-    if ([query length] == 0) {
-        return;
-    }
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://localhost:4200/_sql"]];
-    [request setHTTPMethod:@"POST"];
-    [request addValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField: @"Content-Type"];
-    
-    NSMutableData *postBody = [NSMutableData data];
-    [postBody appendData:[[NSString stringWithFormat:@"{\"stmt\":\"%@\"}", query] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPBody:postBody];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:queue completionHandler:^(NSURLResponse *response,
-                                                                       NSData *data,
-                                                                       NSError *connectionError) {
-                                           if (!data) {
-                                               return;
-                                           };
-                                           
-                                           NSError *error = nil;
-                                           self.results = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                           
-                                           [_results enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-                                               if ([key isEqualToString:@"cols"]) {
-                                                   [self updateTableColumns:obj];
-                                               }
-                                               else if ([key isEqualToString:@"rows"]) {
-                                                   NSLog(@"%@", obj);
-                                               }
-                                               else if ([key isEqualToString:@"rowcount"]) {
-                                                   NSLog(@"%@", obj);
-                                               }
-                                               else if ([key isEqualToString:@"duration"]) {
-                                                   NSLog(@"%@", obj);
-                                               }
-                                               else if ([key isEqualToString:@"error"]) {
-                                               }
-                                           }];
-                                       }];
+    [_document.selectedCluster sql:_queryTextView.string withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
+       [response enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+           if ([key isEqualToString:@"cols"]) {
+               self.results = response;
+               [self updateTableColumns:obj];
+           }
+       }];
+    }];
 }
 
 - (void)updateTableColumns:(NSArray *)cols {

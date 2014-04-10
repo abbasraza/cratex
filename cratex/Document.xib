@@ -304,6 +304,7 @@
         <customObject id="Ta0-UI-MKC" userLabel="clusters" customClass="NSMutableArray"/>
         <viewController title="QueryViewController" nibName="MainMenu" id="GiH-7c-cIt" customClass="QueryViewController">
             <connections>
+                <outlet property="document" destination="-2" id="a5I-xy-cfp"/>
                 <outlet property="queryButton" destination="R6k-fe-Zfx" id="ghN-fO-X1r"/>
                 <outlet property="queryTextView" destination="o6j-9l-8yj" id="TBp-kK-WsT"/>
                 <outlet property="resultTableView" destination="b1i-hB-7na" id="diW-dd-nGv"/>
