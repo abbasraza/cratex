@@ -21,6 +21,13 @@
 @property(copy)NSNumber* configured;
 @property(copy)NSNumber* missing;
 
+@property(copy)NSString* available_data;
+@property(copy)NSString* records_unavailable;
+@property(copy)NSString* replicated_data;
+@property(copy)NSString* records_total;
+@property(copy)NSString* records_underreplicated;
+
+
 @property(copy)NSArray* shardInfo;
 
 +(Cluster*)clusterWithTitle:(NSString*)title andURL:(NSString*)url;

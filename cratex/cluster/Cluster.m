@@ -3,6 +3,12 @@
 
 #import "Cluster.h"
 
+@interface Cluster ()
+
+- (void)setDefaults;
+
+@end
+
 @implementation Cluster
 
 +(Cluster *)clusterWithTitle:(NSString *)title andURL:(NSString *)url {
@@ -12,7 +18,18 @@
         cluster.url = url;
     }
     [cluster fetchOverView];
+    [cluster setDefaults];
     return cluster;
+}
+
+-(void)setDefaults {
+    self.state = @"-";
+    self.available_data = @"100%";
+    self.records_unavailable = @"0";
+    self.replicated_data = @"100%";
+    self.records_total = @"0";
+    self.records_underreplicated = @"0";
+
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
@@ -20,6 +37,7 @@
     if (self) {
         self.title = [aDecoder decodeObjectForKey:@"title"];
         self.url = [aDecoder decodeObjectForKey:@"url"];
+        [self setDefaults];
         [self fetchOverView];
     }
     return self;
@@ -92,7 +110,7 @@
         
         [self sql:shardQuery withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
             NSArray* shardInfo = [self convertSQLResult:response fields:@[@"name", @"count", @"primary", @"state", @"sum_docs", @"avg_docs", @"size"]];
-            NSLog(@"shard info %@", shardInfo);
+            //  NSLog(@"shard info %@", shardInfo);
             self.shardInfo = shardInfo;
             
             // Calculate Active Primary
@@ -115,13 +133,13 @@
             self.unassigned = [NSNumber numberWithInt:unassigend];
             self.configured = [NSNumber numberWithInt:configured];
             if(active < configured){
-                self.state = @"red";
+                self.state = @"Red";
             } else if (unassigend > 0){
-                self.state = @"warning";
+                self.state = @"Warning";
             } else {
-                self.state = @"good";
+                self.state = @"Good";
             }
-            NSLog(@"active primary %@", self.activePrimary);
+            // NSLog(@"active primary %@", self.activePrimary);
         }];
     }];
 }
