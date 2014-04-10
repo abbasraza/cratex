@@ -10,6 +10,7 @@
 #import "Cluster.h"
 #import "cluster/ClusterSettingsViewController.h"
 #import "QueryViewController.h"
+#import "AppDelegate.h"
 
 @interface Document()
 
@@ -20,26 +21,9 @@
 @property (weak) IBOutlet QueryViewController *queryViewController;
 @property (weak) IBOutlet NSSplitView* splitView;
 
--(void)addData;
--(void)updateClusters:(NSNotification*)notification;
-
 @end
 
 @implementation Document
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Insert code here to initialize your application
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(updateClusters:)
-                                                     name:@"updateClusters"
-                                                   object:nil];
-        
-    }
-    return self;
-}
 
 - (NSString *)windowNibName
 {
@@ -56,7 +40,7 @@
     self.clusterOutlineView.dataSource = self;
     self.clusterOutlineView.floatsGroupRows = NO; // Prevent a sticky header
     
-    [self addData];
+    [self.clusterController setContent:[(AppDelegate*)[[NSApplication sharedApplication] delegate] clusters]];
     
     // Expand the first group and select the first item in the list
     [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
@@ -123,31 +107,6 @@
     return NO;
 }
 
-- (void)addData{
-    
-    // `children` and `isLeaf` have to be configured for the Tree Controller in IB
-    NSMutableDictionary *root = @{@"title": @"CLUSTER",
-                                  @"isLeaf": @(NO),
-                                  @"children":@[
-                                          [Cluster clusterWithTitle:@"Localhost" andURL:@"http://localhost:4200/"],
-                                          [Cluster clusterWithTitle:@"Crate Demo Cluster" andURL:@"http://demo.crate.io:4200/"]
-                                          ].mutableCopy
-                                  }.mutableCopy;
-    
-    [self.clusterController addObject:root];
-}
-
-
-- (void)updateClusters:(NSNotification*)notification {
-    NSIndexSet* selected = [self.clusterOutlineView selectedRowIndexes];
-    
-    [self.clusterController setContent:[[notification userInfo] objectForKey:@"cluster"]];
-    // expand
-    [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
-    [self.clusterOutlineView selectRowIndexes:selected byExtendingSelection:NO];
-
-}
-
 
 - (IBAction)addObjectClicked:(id)sender {
     Cluster* cluster = [Cluster new];    
@@ -155,9 +114,9 @@
     [self.clusterController insertObject:cluster
                atArrangedObjectIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2]];
     [[NSNotificationCenter defaultCenter]
-        postNotificationName:@"updateClusters"
+        postNotificationName:@"clustersUpdated"
         object:nil
-     userInfo:@{@"cluster": [self.clusterController content]}];
+      userInfo:nil];
 }
 
 - (Cluster*)selectedCluster {

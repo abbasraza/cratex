@@ -14,6 +14,7 @@
 - (IBAction)showWebsite:(id)sender;
 
 @property (strong) NSStatusItem *statusItem;
+@property (strong) NSMutableDictionary* clusters;
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSMenu *statusMenu;
