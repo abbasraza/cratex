@@ -23,6 +23,11 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    _resultTableView.delegate = self;
+    _resultTableView.dataSource = self;
+}
+
 - (IBAction)executeQuery:(id)sender {
     [self sql:_queryTextView.string];
 }
@@ -83,10 +88,31 @@
         [cols enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"obj"];
             [[column headerCell] setStringValue:obj];
+            [column setIdentifier:[NSString stringWithFormat:@"%lu", (unsigned long)idx]];
             [_resultTableView addTableColumn:column];
         }];
         [_resultTableView reloadData];
     });
 }
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return [[_results objectForKey:@"rows"] count];
+}
+
+- (NSView *)tableView:(NSTableView *)tableView
+   viewForTableColumn:(NSTableColumn *)tableColumn
+                  row:(NSInteger)row {
+    
+    NSTextField *result = [tableView makeViewWithIdentifier:@"ResultView" owner:self];
+    if (result == nil) {
+        result = [[NSTextField alloc] initWithFrame:CGRectMake(0.0, 0.0, tableColumn.width, 40.0)];
+        result.identifier = @"ResultView";
+    }
+    result.stringValue = [[[_results objectForKey:@"rows"]
+                           objectAtIndex:row]
+                          objectAtIndex:[[tableColumn identifier] intValue]];
+    return result;
+}
+
 
 @end
