@@ -72,12 +72,21 @@
                                                                        NSData *data,
                                                                        NSError *connectionError) {
                                            if (!data) {
+                                               if (connectionError) {
+                                                   callback(NO, nil, connectionError);
+                                               }
                                                return;
                                            };
                                            
                                            NSError *error = nil;
                                            NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                           callback(YES, results, error);
+                                           
+                                           BOOL success = YES;
+                                           if ([results objectForKey:@"error"]) {
+                                               success = NO;
+                                           }
+                                           
+                                           callback(success, results, error);
                                        }];
     
 }

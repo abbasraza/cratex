@@ -32,6 +32,7 @@
     _resultTableView.delegate = self;
     _queryTextView.delegate = self;
     _resultTableView.dataSource = self;
+    _logTextField.font = [NSFont defaultLightFontWithSize:14];
     [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
 }
 
@@ -45,33 +46,52 @@
             [self executeQuery:nil];
             return YES;
         }
-        
     }
-    
     return result;
 }
 
 
 - (IBAction)executeQuery:(id)sender {
     
+    [self resetUI];
+    
     NSString *queryString = [_queryTextView.string formatForSQLQuery];
     [_document.selectedCluster sql:queryString withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
-       [response enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-           if ([key isEqualToString:@"cols"]) {
-               self.results = response;
-               [self updateTableColumns:obj];
-           }
-       }];
+        if (success) {
+           [response enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+               if ([key isEqualToString:@"cols"]) {
+                   self.results = response;
+                   [self updateTableColumns:obj];
+               }
+           }];
+        } else if (error) {
+            [self showErrorInLog:error.description];
+        } else {
+            [self showErrorInLog:[response objectForKey:@"error"]];
+        }
     }];
 }
 
-- (void)updateTableColumns:(NSArray *)cols {
+- (void)showErrorInLog:(NSString *)text {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _logTextField.stringValue = text;
+    });
+}
+
+- (void)resetUI {
     dispatch_async(dispatch_get_main_queue(), ^{
         // Remove all columns from the table view
         [[[_resultTableView tableColumns] copy] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [_resultTableView removeTableColumn:obj];
         }];
-       
+        [_resultTableView reloadData];
+        
+        _logTextField.stringValue = @"";
+    });
+}
+
+- (void)updateTableColumns:(NSArray *)cols {
+    dispatch_async(dispatch_get_main_queue(), ^{
         // Add columns depending on the fetch result
         [cols enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"obj"];

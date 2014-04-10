@@ -61,7 +61,6 @@
 # pragma mark - Action handling
 
 - (IBAction)showDetail:(id)sender {
-    [_window setIsVisible:YES];
     [NSApp activateIgnoringOtherApps:YES];
 }
 
