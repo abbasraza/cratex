@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Cluster : NSObject
+@interface Cluster : NSObject <NSCoding>
 
 @property(copy)NSString* title;
 @property(copy)NSString* url;

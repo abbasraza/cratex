@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ClusterSettingsViewController : NSViewController
+@interface ClusterSettingsViewController : NSViewController <NSTextFieldDelegate>
 
 @end

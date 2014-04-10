@@ -14,6 +14,20 @@
     return cluster;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        self.title = [aDecoder decodeObjectForKey:@"title"];
+        self.url = [aDecoder decodeObjectForKey:@"url"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.url forKey:@"url"];
+}
+
 -(BOOL)isLeaf {
     return YES;
 }

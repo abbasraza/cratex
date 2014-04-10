@@ -13,6 +13,8 @@
 @interface AppDelegate()
 
 -(void)clustersUpdated:(NSNotification*)notification;
+-(NSString*)pathForArchive:(NSString *)archiveName;
+-(NSURL *)applicationDocumentsDirectory;
 
 @end
 
@@ -21,19 +23,21 @@
 - (id)init {
     self = [super init];
     if(self){
-        self.clusters = @{@"title": @"CLUSTER",
-                          @"isLeaf": @(NO),
-                          @"children":@[
-                                  [Cluster clusterWithTitle:@"Localhost" andURL:@"http://localhost:4200/"],
-                                  [Cluster clusterWithTitle:@"Crate Demo Cluster" andURL:@"http://demo.crate.io:4200/"]
-                                  ].mutableCopy
-                          }.mutableCopy;
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(clustersUpdated:)
                                                      name:@"clustersUpdated"
                                                    object:nil];
-        
-
+        id archivedClusters = [NSKeyedUnarchiver unarchiveObjectWithFile:[self pathForArchive:@"clusters"]];
+        if(archivedClusters){
+            self.clusters = archivedClusters;
+        }else {
+            self.clusters = @{@"title": @"CLUSTER",
+                              @"isLeaf": @(NO),
+                              @"children":@[
+                                      [Cluster clusterWithTitle:@"Localhost" andURL:@"http://localhost:4200/"]
+                                      ].mutableCopy
+                              }.mutableCopy;
+        }
     }
     return self;
 }
@@ -47,6 +51,7 @@
     [_statusItem setImage:[NSImage imageNamed:@"tray_icon"]];
     [_statusItem setHighlightMode:YES];
 }
+
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
     [self showDetail:nil];
@@ -66,7 +71,20 @@
 }
 
 - (void)clustersUpdated:(NSNotification *)notification {
-    
+    [NSKeyedArchiver archiveRootObject:self.clusters toFile:[self pathForArchive:@"clusters"]];
+}
+
+#pragma mark - Application's Documents directory
+
+- (NSString*)pathForArchive:(NSString *)archiveName {
+    NSString* pathComponent = [NSString stringWithFormat:@"%@.archive", archiveName];
+    return [[self applicationDocumentsDirectory].path stringByAppendingPathComponent:pathComponent];
+}
+
+// Returns the URL to the application's Documents directory.
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                   inDomains:NSUserDomainMask] lastObject];
 }
 
 

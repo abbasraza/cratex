@@ -124,7 +124,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="FWI-T0-fEK"/>
                                         </constraints>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="B4Y-XO-cUA">
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="B4Y-XO-cUA">
                                             <rect key="frame" x="0.0" y="585" width="215.5" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -233,6 +233,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="1dP-u5-nFx" name="value" keyPath="selection.title" id="EbZ-OF-VZu"/>
+                        <outlet property="delegate" destination="L9L-Bu-Ej0" id="Oqv-vr-mKs"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8w6-y0-9Q9">
@@ -254,6 +255,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="1dP-u5-nFx" name="value" keyPath="selection.url" id="ew8-dJ-6KX"/>
+                        <outlet property="delegate" destination="L9L-Bu-Ej0" id="gzz-gd-BmN"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZB-fR-bGR">
@@ -314,7 +316,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="73Y-QK-YUX">
-                        <rect key="frame" x="252" y="1" width="16" height="133"/>
+                        <rect key="frame" x="454" y="1" width="16" height="109"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -346,11 +348,11 @@
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="vrh-Y1-zCt">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="vrh-Y1-zCt">
                         <rect key="frame" x="1" y="1" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" id="ldp-6i-X0Y">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ldp-6i-X0Y">
                         <rect key="frame" x="454" y="17" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>

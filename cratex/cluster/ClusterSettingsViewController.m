@@ -23,4 +23,11 @@
     return self;
 }
 
+-(void)controlTextDidEndEditing:(NSNotification *)obj {
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"clustersUpdated"
+     object:nil
+     userInfo:nil];
+}
+
 @end
