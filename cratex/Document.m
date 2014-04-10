@@ -160,4 +160,8 @@
      userInfo:@{@"cluster": [self.clusterController content]}];
 }
 
+- (Cluster*)selectedCluster {
+    return [[self.clusterController selectedObjects] objectAtIndex:0];
+}
+
 @end

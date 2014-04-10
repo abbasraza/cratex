@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Cluster.h"
 
 @interface Document : NSDocument <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 - (IBAction)addObjectClicked:(id)sender;
+- (Cluster*)selectedCluster;
 
 @end
