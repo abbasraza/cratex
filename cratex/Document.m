@@ -21,6 +21,7 @@
 @property (weak) IBOutlet NSSplitView* splitView;
 
 -(void)addData;
+-(void)updateClusters:(NSNotification*)notification;
 
 @end
 
@@ -31,6 +32,10 @@
     self = [super init];
     if (self) {
         // Insert code here to initialize your application
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(updateClusters:)
+                                                     name:@"updateClusters"
+                                                   object:nil];
         
     }
     return self;
@@ -133,10 +138,26 @@
 }
 
 
-- (IBAction)addObject:(id)sender {
-    NSUInteger indexArr[] = {0,0};
+- (void)updateClusters:(NSNotification*)notification {
+    NSIndexSet* selected = [self.clusterOutlineView selectedRowIndexes];
     
-    [self.clusterController insertObject:[Cluster new] atArrangedObjectIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2]];
+    [self.clusterController setContent:[[notification userInfo] objectForKey:@"cluster"]];
+    // expand
+    [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
+    [self.clusterOutlineView selectRowIndexes:selected byExtendingSelection:NO];
+
+}
+
+
+- (IBAction)addObjectClicked:(id)sender {
+    Cluster* cluster = [Cluster new];    
+    NSUInteger indexArr[] = {0,[[[[self.clusterController content] objectAtIndex:0] objectForKey:@"children"] count]};
+    [self.clusterController insertObject:cluster
+               atArrangedObjectIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2]];
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:@"updateClusters"
+        object:nil
+     userInfo:@{@"cluster": [self.clusterController content]}];
 }
 
 @end
