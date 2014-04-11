@@ -12,6 +12,7 @@
 #import "QueryViewController.h"
 #import "NSFont+Additions.h"
 #import "NSString+Additions.h"
+#import "Query.h"
 
 @interface QueryViewController ()
 
@@ -19,16 +20,9 @@
 
 @implementation QueryViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
-}
-
 - (void)awakeFromNib {
+    self.history = [[History alloc] init];
+    
     _resultTableView.delegate = self;
     _queryTextView.delegate = self;
     _resultTableView.dataSource = self;
@@ -53,34 +47,54 @@
             [self executeQuery:nil];
             return YES;
         }
+    } else if (aSelector == @selector(moveUp:)) {
+        [self showQuery:[_history previous]];
+    } else if (aSelector == @selector(moveDown:)) {
+        [self showQuery:[_history next]];
     }
     return result;
+}
+
+- (void)showQuery:(Query *)query {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (query) {
+            if (!query.successful) {
+                _queryTextView.textColor = [NSColor redColor];
+            } else {
+                _queryTextView.textColor = [NSColor blackColor];
+            }
+            _queryTextView.string = [query queryString];
+        }
+    });
 }
 
 - (IBAction)executeQuery:(id)sender {
     
     [self resetUI];
     
-    NSString *queryString = [_queryTextView.string formatForSQLQuery];
-    [self addToHistory:queryString];
-    [_document.selectedCluster sql:queryString withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
+    Query *query = [[Query alloc] init];
+    query.queryString = _queryTextView.string;
+    query.successful = NO;
+    
+    [_history addQuery:query];
+    [_document.selectedCluster sql:[query.queryString formatForSQLQuery] withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
         if (success) {
            [response enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
                if ([key isEqualToString:@"cols"]) {
                    self.results = response;
+                   query.successful = YES;
                    [self updateTableColumns:obj];
                }
            }];
         } else if (error) {
+            query.log = error.description;
             [self showErrorInLog:error.description];
         } else {
+            query.log = [response objectForKey:@"error"];
             [self showErrorInLog:[response objectForKey:@"error"]];
         }
+        [self showQuery:query];
     }];
-}
-
-- (void)addToHistory:(NSString *)query {
-    
 }
 
 - (void)showErrorInLog:(NSString *)text {

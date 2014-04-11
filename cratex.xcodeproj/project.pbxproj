@@ -26,6 +26,8 @@
 		EB65839B18F7D4150057FEE0 /* BlenderPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB65839A18F7D4150057FEE0 /* BlenderPro-Bold.otf */; };
 		EB6583AF18F7F3660057FEE0 /* NSFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6583AC18F7F3660057FEE0 /* NSFont+Additions.m */; };
 		EB6583B018F7F3660057FEE0 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6583AE18F7F3660057FEE0 /* NSString+Additions.m */; };
+		EB6583B418F7F3C00057FEE0 /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6583B318F7F3C00057FEE0 /* Query.m */; };
+		EB6583B718F7F3CC0057FEE0 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6583B618F7F3CC0057FEE0 /* History.m */; };
 		EB91DF0518F539FF003CF3DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB91DF0418F539FF003CF3DE /* Cocoa.framework */; };
 		EB91DF0F18F539FF003CF3DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB91DF0D18F539FF003CF3DE /* InfoPlist.strings */; };
 		EB91DF1118F539FF003CF3DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB91DF1018F539FF003CF3DE /* main.m */; };
@@ -79,6 +81,10 @@
 		EB6583AC18F7F3660057FEE0 /* NSFont+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+Additions.m"; sourceTree = "<group>"; };
 		EB6583AD18F7F3660057FEE0 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		EB6583AE18F7F3660057FEE0 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		EB6583B218F7F3C00057FEE0 /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
+		EB6583B318F7F3C00057FEE0 /* Query.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Query.m; sourceTree = "<group>"; };
+		EB6583B518F7F3CC0057FEE0 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		EB6583B618F7F3CC0057FEE0 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
 		EB91DF0118F539FF003CF3DE /* cratex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cratex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB91DF0418F539FF003CF3DE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EB91DF0718F539FF003CF3DE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -185,6 +191,10 @@
 		EB6583B118F7F3780057FEE0 /* history */ = {
 			isa = PBXGroup;
 			children = (
+				EB6583B218F7F3C00057FEE0 /* Query.h */,
+				EB6583B318F7F3C00057FEE0 /* Query.m */,
+				EB6583B518F7F3CC0057FEE0 /* History.h */,
+				EB6583B618F7F3CC0057FEE0 /* History.m */,
 			);
 			path = history;
 			sourceTree = "<group>";
@@ -437,10 +447,12 @@
 			files = (
 				EB91DF1818F539FF003CF3DE /* AppDelegate.m in Sources */,
 				EB6583AF18F7F3660057FEE0 /* NSFont+Additions.m in Sources */,
+				EB6583B718F7F3CC0057FEE0 /* History.m in Sources */,
 				17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */,
 				EB6583B018F7F3660057FEE0 /* NSString+Additions.m in Sources */,
 				1736388F18F6E3BA00470BA7 /* CLusterOverviewViewController.m in Sources */,
 				17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */,
+				EB6583B418F7F3C00057FEE0 /* Query.m in Sources */,
 				17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */,
 				EB91DF1118F539FF003CF3DE /* main.m in Sources */,
 				1736389218F7182900470BA7 /* Table.m in Sources */,
