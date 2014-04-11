@@ -7,6 +7,7 @@
 @interface Cluster ()
 
 - (void)setDefaults;
+@property(nonatomic)NSTimer* fetchHealthTimer;
 
 @end
 
@@ -86,13 +87,16 @@
                                            if ([results objectForKey:@"error"]) {
                                                success = NO;
                                            }
-                                           
                                            callback(success, results, error);
                                        }];
-    
 }
 
 - (void)fetchOverView {
+    self.fetchHealthTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                             target:self
+                                                           selector:@selector(fetchHealth)
+                                                           userInfo:nil
+                                                            repeats:YES];
     [self fetchHealth];
 }
 
@@ -109,7 +113,7 @@
 - (void)fetchHealth {
     NSString* tableQuery = @"select table_name, sum(number_of_shards), number_of_replicas \
                                 from information_schema.tables \
-                                where schema_name in ('doc') \
+                                where schema_name in ('doc', 'blob') \
                                 group by table_name, number_of_replicas";
     [self sql:tableQuery withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
         
@@ -123,7 +127,6 @@
                 return;
             }
             NSArray* shardInfo = [self convertSQLResult:response fields:@[@"name", @"count", @"primary", @"state", @"sum_docs", @"avg_docs", @"size"]];
-            //  NSLog(@"shard info %@", shardInfo);
             self.shardInfo = shardInfo;
             
             // Calculate Active Primary
