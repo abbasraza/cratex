@@ -62,6 +62,7 @@
     [self resetUI];
     
     NSString *queryString = [_queryTextView.string formatForSQLQuery];
+    [self addToHistory:queryString];
     [_document.selectedCluster sql:queryString withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
         if (success) {
            [response enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -76,6 +77,10 @@
             [self showErrorInLog:[response objectForKey:@"error"]];
         }
     }];
+}
+
+- (void)addToHistory:(NSString *)query {
+    
 }
 
 - (void)showErrorInLog:(NSString *)text {
