@@ -16,6 +16,7 @@
 -(NSString*)pathForArchive:(NSString *)archiveName;
 -(NSURL *)applicationDocumentsDirectory;
 -(void)statusUpdated:(NSNotification*)notification;
+-(IBAction)openDocument:(id)sender;
 @property(nonatomic)NSMutableArray* menuItems;
 
 @end
@@ -111,6 +112,7 @@
             NSMenuItem* item = [[NSMenuItem alloc] init];
             [item setImage:cluster.state.icon];
             [item setTitle:cluster.title];
+            [item setAction:@selector(openDocument:)];
             [self.menuItems addObject:item];
         }
     }];
@@ -121,6 +123,11 @@
     [self.menuItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [_statusMenu insertItem:obj atIndex:idx];
     }];
+}
+
+-(IBAction)openDocument:(id)sender {
+    NSDocumentController* controller = [NSDocumentController sharedDocumentController];
+    [controller newDocument:nil];
 }
 
 
