@@ -16,6 +16,7 @@
 -(NSString*)pathForArchive:(NSString *)archiveName;
 -(NSURL *)applicationDocumentsDirectory;
 -(void)statusUpdated:(NSNotification*)notification;
+@property(nonatomic)NSMutableArray* menuItems;
 
 @end
 
@@ -24,6 +25,7 @@
 - (id)init {
     self = [super init];
     if(self){
+        self.menuItems = [[NSMutableArray alloc] init];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(clustersUpdated:)
                                                      name:@"clustersUpdated"
@@ -76,6 +78,7 @@
 
 - (void)clustersUpdated:(NSNotification *)notification {
     [NSKeyedArchiver archiveRootObject:self.clusters toFile:[self pathForArchive:@"clusters"]];
+    [self statusUpdated:notification];
 }
 
 #pragma mark - Application's Documents directory
@@ -92,14 +95,32 @@
 }
 
 - (void)statusUpdated:(NSNotification *)notification {
+    // Remove all menu items
+    [self.menuItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [_statusMenu removeItem:obj];
+    }];
+    [self.menuItems removeAllObjects];
+    
     NSArray* clusters = [[self clusters] objectForKey:@"children"];
     ClusterState* __block state = [ClusterState clusterState:@"Unknown" withCode:0 andIcon:@"tray_icon"];
     [clusters enumerateObjectsUsingBlock:^(Cluster* cluster, NSUInteger idx, BOOL *stop) {
         if([cluster.considerOverall boolValue] && cluster.state.code > state.code){
             state = cluster.state;
         }
+        if(cluster.state && cluster.title){
+            NSMenuItem* item = [[NSMenuItem alloc] init];
+            [item setImage:cluster.state.icon];
+            [item setTitle:cluster.title];
+            [self.menuItems addObject:item];
+        }
     }];
+    
+    // Add menu items
+    [_statusMenu setMenuChangedMessagesEnabled:NO];
     [_statusItem setImage:[state icon]];
+    [self.menuItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [_statusMenu insertItem:obj atIndex:idx];
+    }];
 }
 
 
