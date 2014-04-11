@@ -7,6 +7,7 @@
 @interface Cluster ()
 
 - (void)setDefaults;
+@property(nonatomic)NSTimer* fetchHealthTimer;
 
 @end
 
@@ -91,6 +92,11 @@
 }
 
 - (void)fetchOverView {
+    self.fetchHealthTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                             target:self
+                                                           selector:@selector(fetchHealth)
+                                                           userInfo:nil
+                                                            repeats:YES];
     [self fetchHealth];
 }
 
