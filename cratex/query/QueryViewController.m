@@ -34,6 +34,10 @@
     _resultTableView.dataSource = self;
     _logTextField.font = [NSFont defaultLightFontWithSize:14];
     _statusLabel.font = [NSFont defaultBoldFontWithSize:14];
+    _rowcountLabel.font = [NSFont defaultLightFontWithSize:14];
+    _rowcountPrefixLabel.font = [NSFont defaultLightFontWithSize:14];
+    _durationLabel.font = [NSFont defaultLightFontWithSize:14];
+    _durationPrefixLabel.font = [NSFont defaultLightFontWithSize:14];
     [self resetUI];
     [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
 }
@@ -92,6 +96,8 @@
         _logTextField.stringValue = @"";
         _statusLabel.stringValue = @"";
         _statusLabel.stringValue = @"";
+        _rowcountLabel.stringValue = @"";
+        _durationLabel.stringValue = @"";
     });
 }
 

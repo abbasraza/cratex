@@ -17,6 +17,10 @@
 @property IBOutlet NSTextField *logTextField;
 @property IBOutlet Document *document;
 @property IBOutlet NSTextField *statusLabel;
+@property IBOutlet NSTextField *rowcountLabel;
+@property IBOutlet NSTextField *rowcountPrefixLabel;
+@property IBOutlet NSTextField *durationLabel;
+@property IBOutlet NSTextField *durationPrefixLabel;
 
 @property (strong, nonatomic) NSDictionary *results;
 
