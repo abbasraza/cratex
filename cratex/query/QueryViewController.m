@@ -33,6 +33,8 @@
     _queryTextView.delegate = self;
     _resultTableView.dataSource = self;
     _logTextField.font = [NSFont defaultLightFontWithSize:14];
+    _statusLabel.font = [NSFont defaultBoldFontWithSize:14];
+    [self resetUI];
     [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
 }
 
@@ -75,6 +77,7 @@
 - (void)showErrorInLog:(NSString *)text {
     dispatch_async(dispatch_get_main_queue(), ^{
         _logTextField.stringValue = text;
+        [self updateStatusLabel:NO];
     });
 }
 
@@ -87,6 +90,8 @@
         [_resultTableView reloadData];
         
         _logTextField.stringValue = @"";
+        _statusLabel.stringValue = @"";
+        _statusLabel.stringValue = @"";
     });
 }
 
@@ -100,8 +105,19 @@
             [column setIdentifier:[NSString stringWithFormat:@"%lu", (unsigned long)idx]];
             [_resultTableView addTableColumn:column];
         }];
+        [self updateStatusLabel:YES];
         [_resultTableView reloadData];
     });
+}
+
+- (void)updateStatusLabel:(BOOL)success {
+    if (success) {
+        _statusLabel.stringValue = @"OK";
+        _statusLabel.textColor = [NSColor greenColor];
+    } else {
+        _statusLabel.stringValue = @"Failure";
+        _statusLabel.textColor = [NSColor redColor];
+    }
 }
 
 - (CGFloat)maxWidthForIndex:(NSUInteger)index forColumn:(NSTableColumn *)column {

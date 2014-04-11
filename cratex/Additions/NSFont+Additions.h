@@ -12,5 +12,6 @@
 
 + (NSFont *)defaultTableViewFontWithSize:(CGFloat)size;
 + (NSFont *)defaultLightFontWithSize:(CGFloat)size;
++ (NSFont *)defaultBoldFontWithSize:(CGFloat)size;
 
 @end

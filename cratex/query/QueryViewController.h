@@ -16,6 +16,7 @@
 @property IBOutlet NSButton *queryButton;
 @property IBOutlet NSTextField *logTextField;
 @property IBOutlet Document *document;
+@property IBOutlet NSTextField *statusLabel;
 
 @property (strong, nonatomic) NSDictionary *results;
 

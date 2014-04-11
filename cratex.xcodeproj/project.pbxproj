@@ -22,6 +22,7 @@
 		EB5D902218F5597B00410BE7 /* tray_icon_r@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5D901A18F5597B00410BE7 /* tray_icon_r@2x.png */; };
 		EB5D902318F5597B00410BE7 /* tray_icon_y.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5D901B18F5597B00410BE7 /* tray_icon_y.png */; };
 		EB5D902418F5597B00410BE7 /* tray_icon_y@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5D901C18F5597B00410BE7 /* tray_icon_y@2x.png */; };
+		EB65839B18F7D4150057FEE0 /* BlenderPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB65839A18F7D4150057FEE0 /* BlenderPro-Bold.otf */; };
 		EB91DF0518F539FF003CF3DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB91DF0418F539FF003CF3DE /* Cocoa.framework */; };
 		EB91DF0F18F539FF003CF3DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB91DF0D18F539FF003CF3DE /* InfoPlist.strings */; };
 		EB91DF1118F539FF003CF3DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB91DF1018F539FF003CF3DE /* main.m */; };
@@ -70,6 +71,7 @@
 		EB5D901A18F5597B00410BE7 /* tray_icon_r@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tray_icon_r@2x.png"; sourceTree = "<group>"; };
 		EB5D901B18F5597B00410BE7 /* tray_icon_y.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tray_icon_y.png; sourceTree = "<group>"; };
 		EB5D901C18F5597B00410BE7 /* tray_icon_y@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tray_icon_y@2x.png"; sourceTree = "<group>"; };
+		EB65839A18F7D4150057FEE0 /* BlenderPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlenderPro-Bold.otf"; sourceTree = "<group>"; };
 		EB91DF0118F539FF003CF3DE /* cratex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cratex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB91DF0418F539FF003CF3DE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EB91DF0718F539FF003CF3DE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -270,6 +272,7 @@
 		EBFF001C18F6D43500565CAF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EB65839A18F7D4150057FEE0 /* BlenderPro-Bold.otf */,
 				EBFF001D18F6D43500565CAF /* BlenderPro-Thin.otf */,
 			);
 			path = Fonts;
@@ -362,6 +365,7 @@
 				EB5D901F18F5597B00410BE7 /* tray_icon_g.png in Resources */,
 				EB5D902018F5597B00410BE7 /* tray_icon_g@2x.png in Resources */,
 				17F97E7018F5CBA900CF2CC6 /* Document.xib in Resources */,
+				EB65839B18F7D4150057FEE0 /* BlenderPro-Bold.otf in Resources */,
 				EB5D902418F5597B00410BE7 /* tray_icon_y@2x.png in Resources */,
 				EB91DF1518F539FF003CF3DE /* Credits.rtf in Resources */,
 				EB5D902318F5597B00410BE7 /* tray_icon_y.png in Resources */,

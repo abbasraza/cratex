@@ -308,6 +308,7 @@
                 <outlet property="queryButton" destination="R6k-fe-Zfx" id="ghN-fO-X1r"/>
                 <outlet property="queryTextView" destination="o6j-9l-8yj" id="TBp-kK-WsT"/>
                 <outlet property="resultTableView" destination="bEG-JH-5M1" id="9gN-aB-LdW"/>
+                <outlet property="statusLabel" destination="iHT-ra-uUS" id="gaB-QJ-CyS"/>
                 <outlet property="view" destination="OmX-B7-Myx" id="XJY-gA-JEC"/>
             </connections>
         </viewController>
@@ -431,6 +432,15 @@ DQ
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iHT-ra-uUS">
+                    <rect key="frame" x="18" y="234" width="65" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OK" id="727-9n-6b9">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="Nxl-iL-YDc" firstAttribute="leading" secondItem="OmX-B7-Myx" secondAttribute="leading" constant="20" id="3Zw-pa-oug"/>
