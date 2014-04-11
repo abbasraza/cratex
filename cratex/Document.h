@@ -14,5 +14,6 @@
 - (IBAction)addObjectClicked:(id)sender;
 - (IBAction)removeObjectClicked:(id)sender;
 - (Cluster*)selectedCluster;
+- (void)setCluster:(NSInteger)index;
 
 @end

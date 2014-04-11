@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Cluster.h"
 #import "ClusterSettingsViewController.h"
+#import "Document.h"
 
 @interface AppDelegate()
 
@@ -126,8 +127,11 @@
 }
 
 -(IBAction)openDocument:(id)sender {
+    NSInteger index = [_statusMenu indexOfItem:sender];
     NSDocumentController* controller = [NSDocumentController sharedDocumentController];
     [controller newDocument:nil];
+    Document* document = [[controller documents] lastObject];
+    [document setCluster:index];
 }
 
 

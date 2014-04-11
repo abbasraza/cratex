@@ -139,4 +139,9 @@
     return [[self.clusterController selectedObjects] objectAtIndex:0];
 }
 
+-(void)setCluster:(NSInteger)index {
+    [self.clusterOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:index+1] byExtendingSelection:NO];
+
+}
+
 @end
