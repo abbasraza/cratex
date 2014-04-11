@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1736388F18F6E3BA00470BA7 /* CLusterOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1736388E18F6E3BA00470BA7 /* CLusterOverviewViewController.m */; };
+		1736389218F7182900470BA7 /* Table.m in Sources */ = {isa = PBXBuildFile; fileRef = 1736389118F7182900470BA7 /* Table.m */; };
 		17EF9EA818F56B9F00BA89C8 /* Cluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EF9EA718F56B9F00BA89C8 /* Cluster.m */; };
 		17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97DE418F5BA9400CF2CC6 /* ClusterSettingsViewController.m */; };
 		17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97E6D18F5CBA900CF2CC6 /* Document.m */; };
@@ -52,6 +53,8 @@
 		11360EC9E8EC47729D1AB0EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		1736388D18F6E3BA00470BA7 /* CLusterOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLusterOverviewViewController.h; sourceTree = "<group>"; };
 		1736388E18F6E3BA00470BA7 /* CLusterOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLusterOverviewViewController.m; sourceTree = "<group>"; };
+		1736389018F7182900470BA7 /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
+		1736389118F7182900470BA7 /* Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table.m; sourceTree = "<group>"; };
 		17EF9EA618F56B9F00BA89C8 /* Cluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cluster.h; sourceTree = "<group>"; };
 		17EF9EA718F56B9F00BA89C8 /* Cluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cluster.m; sourceTree = "<group>"; };
 		17F97DE318F5BA9400CF2CC6 /* ClusterSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterSettingsViewController.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				17EF9EA718F56B9F00BA89C8 /* Cluster.m */,
 				17F97DE318F5BA9400CF2CC6 /* ClusterSettingsViewController.h */,
 				17F97DE418F5BA9400CF2CC6 /* ClusterSettingsViewController.m */,
+				1736389018F7182900470BA7 /* Table.h */,
+				1736389118F7182900470BA7 /* Table.m */,
 			);
 			path = cluster;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */,
 				EBFF001B18F6BE4B00565CAF /* NSFont+Additions.m in Sources */,
 				EB91DF1118F539FF003CF3DE /* main.m in Sources */,
+				1736389218F7182900470BA7 /* Table.m in Sources */,
 				EB5A37F218F5F29B003169EA /* QueryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

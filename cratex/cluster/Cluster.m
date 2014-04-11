@@ -2,6 +2,7 @@
 //
 
 #import "Cluster.h"
+#import "Table.h"
 
 @interface Cluster ()
 
@@ -118,6 +119,9 @@
                                     from sys.shards group by table_name, 'primary', state";
         
         [self sql:shardQuery withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
+            if(error){
+                return;
+            }
             NSArray* shardInfo = [self convertSQLResult:response fields:@[@"name", @"count", @"primary", @"state", @"sum_docs", @"avg_docs", @"size"]];
             //  NSLog(@"shard info %@", shardInfo);
             self.shardInfo = shardInfo;
@@ -148,7 +152,48 @@
             } else {
                 self.state = @"Good";
             }
-            // NSLog(@"active primary %@", self.activePrimary);
+            
+            NSMutableArray* tableInfos = [[NSMutableArray alloc] init];
+            [self.tables enumerateObjectsUsingBlock:^(id table, NSUInteger idx, BOOL *stop) {
+                NSMutableArray* tableShards = [[NSMutableArray alloc] init];
+                [self.shardInfo enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    //BOOL isPrimary = [[obj objectForKey:@"primary"] isEqualToString:@"primary"];
+                    NSString* tableName = [table objectForKey:@"table_name"];
+                    NSString* shardName = [obj objectForKey:@"name"];
+                    if([tableName isEqualToString:shardName]){
+                        [tableShards addObject:obj];
+                        //records_total += [[obj objectForKey:@"sum_docs"] integerValue];
+                    }
+                }];
+                Table* tableInfo = [Table tableWithShards:tableShards];
+                [tableInfo setShards_configured:[[table objectForKey:@"number_of_shards"] integerValue]];
+                [tableInfos addObject:tableInfo];
+                
+            }];
+            
+            int __block records_unavailable = 0;
+            float __block records_total = 0;
+            int __block records_underreplicated = 0;
+            [tableInfos enumerateObjectsUsingBlock:^(Table *table, NSUInteger idx, BOOL *stop) {
+                records_total += [table totalRecords];
+                records_underreplicated += [table underreplicatedRecords];
+                records_underreplicated += [table unavailableRecords];
+            }];
+
+            self.records_total = [NSString stringWithFormat:@"%.f", records_total];
+            self.records_underreplicated = [NSString stringWithFormat:@"%i", records_underreplicated];
+            self.records_unavailable = [NSString stringWithFormat:@"%i", records_unavailable];
+            
+            float available_data = 100;
+            float replicated_data = 100;
+            if(records_total > 0){
+                available_data = 100.0 * (records_total - records_unavailable ) / records_total;
+                replicated_data = 100.0 * (records_total - records_underreplicated) / records_total;
+            }
+            
+            self.replicated_data = [NSString stringWithFormat:@"%.f%%", replicated_data];
+            self.available_data = [NSString stringWithFormat:@"%.f%%", available_data];
+            
         }];
     }];
 }
