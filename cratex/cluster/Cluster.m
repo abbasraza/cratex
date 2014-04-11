@@ -37,6 +37,7 @@
 +(Cluster *)clusterWithTitle:(NSString *)title andURL:(NSString *)url {
     Cluster* cluster = [[Cluster alloc] init];
     if(cluster){
+        cluster.considerOverall = [NSNumber numberWithBool:YES];
         cluster.title = title;
         cluster.url = url;
     }
@@ -57,6 +58,7 @@
 -(id)init {
     self = [super init];
     if(self){
+        self.considerOverall = [NSNumber numberWithBool:YES];
         [self setDefaults];
         [self fetchOverView];
 
@@ -69,6 +71,7 @@
     if (self) {
         self.title = [aDecoder decodeObjectForKey:@"title"];
         self.url = [aDecoder decodeObjectForKey:@"url"];
+        self.considerOverall = [aDecoder decodeObjectForKey:@"considerOverall"];
         [self setDefaults];
         [self fetchOverView];
     }
@@ -78,6 +81,7 @@
 -(void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.title forKey:@"title"];
     [aCoder encodeObject:self.url forKey:@"url"];
+    [aCoder encodeObject:self.considerOverall forKey:@"considerOverall"];
 }
 
 -(BOOL)isLeaf {
@@ -186,6 +190,10 @@
             } else {
                 self.state = [ClusterState clusterState:@"Good" withCode:1 andIcon:@"tray_icon_g"];
             }
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"statusUpdated"
+             object:nil
+             userInfo:nil];
 
             
             NSMutableArray* tableInfos = [[NSMutableArray alloc] init];
@@ -226,12 +234,7 @@
             
             self.replicated_data = [NSString stringWithFormat:@"%.f%%", replicated_data];
             self.available_data = [NSString stringWithFormat:@"%.f%%", available_data];
-            
-            
-            [[NSNotificationCenter defaultCenter]
-                postNotificationName:@"statusUpdated"
-                object:nil
-                userInfo:nil];
+
             
         }];
     }];

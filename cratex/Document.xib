@@ -290,6 +290,18 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jps-Fr-amd">
+                    <rect key="frame" x="18" y="78" width="184" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Consider in Overall Status" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="C1a-p6-gPs">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="updatedSettings:" target="L9L-Bu-Ej0" id="hGP-O5-S7d"/>
+                        <binding destination="1dP-u5-nFx" name="value" keyPath="selection.considerOverall" id="Bv8-Re-0u4"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <viewController nibName="MainMenu" id="L9L-Bu-Ej0" customClass="ClusterSettingsViewController">

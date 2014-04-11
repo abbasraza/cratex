@@ -95,7 +95,7 @@
     NSArray* clusters = [[self clusters] objectForKey:@"children"];
     ClusterState* __block state = [ClusterState clusterState:@"Unknown" withCode:0 andIcon:@"tray_icon"];
     [clusters enumerateObjectsUsingBlock:^(Cluster* cluster, NSUInteger idx, BOOL *stop) {
-        if(cluster.state.code > state.code){
+        if([cluster.considerOverall boolValue] && cluster.state.code > state.code){
             state = cluster.state;
         }
     }];

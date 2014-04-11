@@ -11,6 +11,7 @@
 @interface ClusterSettingsViewController ()
 
 @property(nonatomic)IBOutlet NSTextField* nameField;
+-(void)sendUpdateNotification;
 
 @end
 
@@ -27,6 +28,18 @@
 
 
 -(void)controlTextDidEndEditing:(NSNotification *)obj {
+    [self sendUpdateNotification];
+}
+
+-(IBAction)updatedSettings:(id)sender {
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"statusUpdated"
+     object:nil
+     userInfo:nil];
+    [self sendUpdateNotification];
+}
+
+-(void)sendUpdateNotification {
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"clustersUpdated"
      object:nil

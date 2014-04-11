@@ -24,6 +24,7 @@
 @property(copy)NSString* title;
 @property(copy)NSString* url;
 @property(readonly)BOOL isLeaf;
+@property(copy)NSNumber* considerOverall;
 
 @property(copy)NSArray* tables;
 @property(copy)NSNumber* activePrimary;

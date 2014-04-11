@@ -10,4 +10,6 @@
 
 @interface ClusterSettingsViewController : NSViewController <NSTextFieldDelegate>
 
+-(IBAction)updatedSettings:(id)sender;
+
 @end
