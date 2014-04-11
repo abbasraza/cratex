@@ -96,8 +96,6 @@
         _logTextField.stringValue = @"";
         _statusLabel.stringValue = @"";
         _statusLabel.stringValue = @"";
-        _rowcountLabel.stringValue = @"";
-        _durationLabel.stringValue = @"";
     });
 }
 
