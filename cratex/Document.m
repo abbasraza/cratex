@@ -140,6 +140,7 @@
 }
 
 -(void)setCluster:(NSInteger)index {
+    [self.clusterOutlineView expandItem:[self.clusterOutlineView itemAtRow:0]];
     [self.clusterOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:index+1] byExtendingSelection:NO];
 
 }
