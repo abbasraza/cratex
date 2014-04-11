@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Document.h"
+#import "History.h"
 
 @interface QueryViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSTextViewDelegate>
 
@@ -23,6 +24,7 @@
 @property IBOutlet NSTextField *durationPrefixLabel;
 
 @property (strong, nonatomic) NSDictionary *results;
+@property (strong, nonatomic) History *history;
 
 - (IBAction)executeQuery:(id)sender;
 
