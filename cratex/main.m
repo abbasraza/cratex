@@ -25,6 +25,7 @@ int main(int argc, const char * argv[])
     @autoreleasepool
     {
         EWActivateFont(@"BlenderPro-Thin");
+        EWActivateFont(@"BlenderPro-Bold");
     }
     
     return NSApplicationMain(argc, argv);

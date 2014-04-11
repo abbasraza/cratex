@@ -18,4 +18,8 @@
     return [NSFont fontWithName:@"BlenderPro-Thin" size:size];
 }
 
++ (NSFont *)defaultBoldFontWithSize:(CGFloat)size {
+    return [NSFont fontWithName:@"BlenderPro-Bold" size:size];
+}
+
 @end
