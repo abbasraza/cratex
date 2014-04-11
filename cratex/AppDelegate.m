@@ -15,6 +15,7 @@
 -(void)clustersUpdated:(NSNotification*)notification;
 -(NSString*)pathForArchive:(NSString *)archiveName;
 -(NSURL *)applicationDocumentsDirectory;
+-(void)statusUpdated:(NSNotification*)notification;
 
 @end
 
@@ -26,6 +27,10 @@
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(clustersUpdated:)
                                                      name:@"clustersUpdated"
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(statusUpdated:)
+                                                     name:@"statusUpdated"
                                                    object:nil];
         id archivedClusters = [NSKeyedUnarchiver unarchiveObjectWithFile:[self pathForArchive:@"clusters"]];
         if(archivedClusters){
@@ -84,6 +89,17 @@
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                    inDomains:NSUserDomainMask] lastObject];
+}
+
+- (void)statusUpdated:(NSNotification *)notification {
+    NSArray* clusters = [[self clusters] objectForKey:@"children"];
+    ClusterState* __block state = [ClusterState clusterState:@"Unknown" withCode:0 andIcon:@"tray_icon"];
+    [clusters enumerateObjectsUsingBlock:^(Cluster* cluster, NSUInteger idx, BOOL *stop) {
+        if(cluster.state.code > state.code){
+            state = cluster.state;
+        }
+    }];
+    [_statusItem setImage:[state icon]];
 }
 
 

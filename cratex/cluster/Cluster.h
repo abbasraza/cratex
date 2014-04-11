@@ -8,13 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+
+@interface ClusterState : NSObject
+
+@property(assign)NSInteger code;
+@property(copy)NSString* name;
+@property(nonatomic)NSImage* icon;
+
++(id)clusterState:(NSString*)name withCode:(NSInteger)code andIcon:(NSString*)icon;
+
+@end
+
 @interface Cluster : NSObject <NSCoding>
 
 @property(copy)NSString* title;
 @property(copy)NSString* url;
 @property(readonly)BOOL isLeaf;
 
-@property(copy)NSString* state;
 @property(copy)NSArray* tables;
 @property(copy)NSNumber* activePrimary;
 @property(copy)NSNumber* unassigned;
@@ -27,7 +37,7 @@
 @property(copy)NSString* records_total;
 @property(copy)NSString* records_underreplicated;
 
-@property(nonatomic)NSImage* statusImage;
+@property(nonatomic)ClusterState* state;
 
 
 @property(copy)NSArray* shardInfo;
@@ -40,3 +50,4 @@ typedef void (^CompletionBlock)(BOOL success, NSDictionary *response, NSError *e
 - (NSArray*)convertSQLResult:(NSDictionary*)result fields:(NSArray*)fields;
 
 @end
+

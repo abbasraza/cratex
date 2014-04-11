@@ -11,6 +11,27 @@
 
 @end
 
+@implementation ClusterState
+
++(id)clusterState:(NSString *)name withCode:(NSInteger)code andIcon:(NSString *)icon {
+    ClusterState* state = [[ClusterState alloc] init];
+    if(state){
+        state.name = name;
+        state.code = code;
+        state.icon = [NSImage imageNamed:icon];
+    }
+    return state;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    ClusterState* state = [ClusterState clusterState:self.name withCode:self.code andIcon:self.icon.name];
+    state.icon = self.icon;
+    return state;
+}
+
+@end
+
 @implementation Cluster
 
 +(Cluster *)clusterWithTitle:(NSString *)title andURL:(NSString *)url {
@@ -25,14 +46,12 @@
 }
 
 -(void)setDefaults {
-    self.state = @"-";
+    self.state = [ClusterState clusterState:@"Unknown" withCode:0 andIcon:@"tray_icon"];
     self.available_data = @"100%";
     self.records_unavailable = @"0";
     self.replicated_data = @"100%";
     self.records_total = @"0";
     self.records_underreplicated = @"0";
-    self.statusImage = [NSImage imageNamed:@"tray_icon"];
-
 }
 
 -(id)init {
@@ -40,6 +59,7 @@
     if(self){
         [self setDefaults];
         [self fetchOverView];
+
     }
     return self;
 }
@@ -160,15 +180,13 @@
             self.unassigned = [NSNumber numberWithInt:unassigend];
             self.configured = [NSNumber numberWithInt:configured];
             if(active < configured){
-                self.state = @"Red";
-                self.statusImage = [NSImage imageNamed:@"tray_icon_r"];
+                self.state = [ClusterState clusterState:@"Red" withCode:3 andIcon:@"tray_icon_r"];
             } else if (unassigend > 0){
-                self.state = @"Warning";
-                self.statusImage = [NSImage imageNamed:@"tray_icon_y"];
+                self.state = [ClusterState clusterState:@"Warning" withCode:2 andIcon:@"tray_icon_y"];
             } else {
-                self.state = @"Good";
-                self.statusImage = [NSImage imageNamed:@"tray_icon_g"];
+                self.state = [ClusterState clusterState:@"Good" withCode:1 andIcon:@"tray_icon_g"];
             }
+
             
             NSMutableArray* tableInfos = [[NSMutableArray alloc] init];
             [self.tables enumerateObjectsUsingBlock:^(id table, NSUInteger idx, BOOL *stop) {
@@ -208,6 +226,12 @@
             
             self.replicated_data = [NSString stringWithFormat:@"%.f%%", replicated_data];
             self.available_data = [NSString stringWithFormat:@"%.f%%", available_data];
+            
+            
+            [[NSNotificationCenter defaultCenter]
+                postNotificationName:@"statusUpdated"
+                object:nil
+                userInfo:nil];
             
         }];
     }];
