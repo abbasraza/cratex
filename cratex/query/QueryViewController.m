@@ -32,21 +32,22 @@
     _resultTableView.delegate = self;
     _queryTextView.delegate = self;
     _resultTableView.dataSource = self;
+    
     _logTextField.font = [NSFont defaultLightFontWithSize:14];
     _statusLabel.font = [NSFont defaultBoldFontWithSize:14];
     _rowcountLabel.font = [NSFont defaultLightFontWithSize:14];
     _rowcountPrefixLabel.font = [NSFont defaultLightFontWithSize:14];
     _durationLabel.font = [NSFont defaultLightFontWithSize:14];
     _durationPrefixLabel.font = [NSFont defaultLightFontWithSize:14];
+    _queryTextView.font = [NSFont defaultLightFontWithSize:20];
+    
     [self resetUI];
-    [_queryTextView setFont:[NSFont defaultLightFontWithSize:20]];
 }
 
 - (BOOL)textView:(NSTextView *)aTextView doCommandBySelector:(SEL)aSelector {
     BOOL result = NO;
     
-    if (aSelector == @selector(insertNewline:))
-    {
+   if (aSelector == @selector(insertNewline:)) {
         //[aTextView insertNewlineIgnoringFieldEditor:self];
         if ([_queryTextView.string endsWithSemicolon]) {
             [self executeQuery:nil];
@@ -55,7 +56,6 @@
     }
     return result;
 }
-
 
 - (IBAction)executeQuery:(id)sender {
     
@@ -91,6 +91,7 @@
         [[[_resultTableView tableColumns] copy] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [_resultTableView removeTableColumn:obj];
         }];
+        self.results = @{};
         [_resultTableView reloadData];
         
         _logTextField.stringValue = @"";
