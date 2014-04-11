@@ -109,7 +109,7 @@
 - (void)fetchHealth {
     NSString* tableQuery = @"select table_name, sum(number_of_shards), number_of_replicas \
                                 from information_schema.tables \
-                                where schema_name in ('doc', 'blob') \
+                                where schema_name in ('doc') \
                                 group by table_name, number_of_replicas";
     [self sql:tableQuery withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
         
@@ -157,12 +157,10 @@
             [self.tables enumerateObjectsUsingBlock:^(id table, NSUInteger idx, BOOL *stop) {
                 NSMutableArray* tableShards = [[NSMutableArray alloc] init];
                 [self.shardInfo enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    //BOOL isPrimary = [[obj objectForKey:@"primary"] isEqualToString:@"primary"];
                     NSString* tableName = [table objectForKey:@"table_name"];
                     NSString* shardName = [obj objectForKey:@"name"];
                     if([tableName isEqualToString:shardName]){
                         [tableShards addObject:obj];
-                        //records_total += [[obj objectForKey:@"sum_docs"] integerValue];
                     }
                 }];
                 Table* tableInfo = [Table tableWithShards:tableShards];
