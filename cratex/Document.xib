@@ -117,7 +117,14 @@
                                                                         <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vsY-QM-Qr4">
                                                                             <rect key="frame" x="3" y="0.0" width="17" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="26x-ek-vCi"/>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="26x-ek-vCi">
+                                                                                <connections>
+                                                                                    <binding destination="zV4-VG-Ude" name="value" keyPath="objectValue.statusImage" id="l3A-oG-p7N"/>
+                                                                                </connections>
+                                                                            </imageCell>
+                                                                            <connections>
+                                                                                <binding destination="zV4-VG-Ude" name="value" keyPath="objectValue.statusImage" id="U24-co-jwP"/>
+                                                                            </connections>
                                                                         </imageView>
                                                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bi2-K1-QT2">
                                                                             <rect key="frame" x="25" y="0.0" width="202" height="17"/>

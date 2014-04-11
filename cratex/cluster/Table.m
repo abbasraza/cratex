@@ -8,7 +8,7 @@
 -(NSArray*)primaryShards;
 -(NSInteger)missingShards;
 -(NSArray*)activePrimaryShards;
--(NSArray*)startetShards;
+-(NSArray*)startedShards;
 -(NSInteger)numActivePrimaryShards;
 -(NSInteger)underreplicatedShards;
 
@@ -33,7 +33,9 @@
 -(int)totalRecords {
     int __block records = 0;
     [[self primaryShards] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        records += [[obj objectForKey:@"sum_docs"] integerValue];
+        if([obj objectForKey:@"sum_docs"]){
+            records += [[obj objectForKey:@"sum_docs"] integerValue];
+        }
     }];
     return records;
 }
@@ -85,14 +87,18 @@
 -(NSInteger)numActivePrimaryShards {
     NSInteger __block num = 0;
     [[self activePrimaryShards] enumerateObjectsUsingBlock:^(id shard, NSUInteger idx, BOOL *stop) {
-        num += [[shard objectForKey:@"count"] integerValue];
+        if([shard objectForKey:@"count"]){
+            num += [[shard objectForKey:@"count"] integerValue];
+        }
     }];
     return num;
 }
 
 -(NSInteger)underreplicatedRecords {
     if([[self primaryShards] count] >0){
-        return [[[[self primaryShards] objectAtIndex:0] objectForKey:@"avg_docs"] integerValue] * [self underreplicatedShards];
+        if([[[self primaryShards] objectAtIndex:0] objectForKey:@"avg_docs"]){
+            return [[[[self primaryShards] objectAtIndex:0] objectForKey:@"avg_docs"] integerValue] * [self underreplicatedShards];
+        }
     }
     return 0;
 }
@@ -103,7 +109,9 @@
 
 -(NSInteger)unavailableRecords {
     if([[self startedShards] count] > 0){
-        return [[[[self startedShards] objectAtIndex:0] objectForKey:@"avg_docs"] integerValue] * [self missingShards];
+        if([[[self primaryShards] objectAtIndex:0] objectForKey:@"avg_docs"]){
+            return [[[[self startedShards] objectAtIndex:0] objectForKey:@"avg_docs"] integerValue] * [self missingShards];
+        }
     }
     return 0;
     

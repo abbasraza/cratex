@@ -31,7 +31,17 @@
     self.replicated_data = @"100%";
     self.records_total = @"0";
     self.records_underreplicated = @"0";
+    self.statusImage = [NSImage imageNamed:@"tray_icon"];
 
+}
+
+-(id)init {
+    self = [super init];
+    if(self){
+        [self setDefaults];
+        [self fetchOverView];
+    }
+    return self;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
@@ -124,6 +134,7 @@
         
         [self sql:shardQuery withCallback:^(BOOL success, NSDictionary *response, NSError *error) {
             if(error){
+                [self setDefaults];
                 return;
             }
             NSArray* shardInfo = [self convertSQLResult:response fields:@[@"name", @"count", @"primary", @"state", @"sum_docs", @"avg_docs", @"size"]];
@@ -150,10 +161,13 @@
             self.configured = [NSNumber numberWithInt:configured];
             if(active < configured){
                 self.state = @"Red";
+                self.statusImage = [NSImage imageNamed:@"tray_icon_r"];
             } else if (unassigend > 0){
                 self.state = @"Warning";
+                self.statusImage = [NSImage imageNamed:@"tray_icon_y"];
             } else {
                 self.state = @"Good";
+                self.statusImage = [NSImage imageNamed:@"tray_icon_g"];
             }
             
             NSMutableArray* tableInfos = [[NSMutableArray alloc] init];

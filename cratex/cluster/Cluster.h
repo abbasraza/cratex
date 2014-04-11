@@ -27,6 +27,8 @@
 @property(copy)NSString* records_total;
 @property(copy)NSString* records_underreplicated;
 
+@property(nonatomic)NSImage* statusImage;
+
 
 @property(copy)NSArray* shardInfo;
 
