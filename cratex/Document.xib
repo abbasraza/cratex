@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4511" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4511"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Document">
@@ -23,7 +23,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="133" y="235" width="860" height="499"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="94" height="86"/>
             <view key="contentView" id="gIp-Ho-8D9">
                 <rect key="frame" x="0.0" y="0.0" width="860" height="499"/>
@@ -62,14 +62,14 @@
                                             <action selector="removeObjectClicked:" target="-2" id="kQ3-Ok-OfL"/>
                                         </connections>
                                     </button>
-                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwI-PO-bqE" userLabel="Clusters Menu View">
+                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="20" horizontalPageScroll="10" verticalLineScroll="20" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwI-PO-bqE" userLabel="Clusters Menu View">
                                         <rect key="frame" x="0.0" y="21" width="230" height="478"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="teP-Ou-3Gc">
                                             <rect key="frame" x="0.0" y="0.0" width="230" height="478"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="16" autosaveExpandedItems="YES" outlineTableColumn="ahO-bA-nVi" id="Ls6-BT-biU">
+                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="16" autosaveExpandedItems="YES" outlineTableColumn="ahO-bA-nVi" id="Ls6-BT-biU">
                                                     <rect key="frame" x="0.0" y="0.0" width="230" height="478"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="0.0"/>
@@ -150,11 +150,11 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="B4Y-XO-cUA">
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="B4Y-XO-cUA">
                                             <rect key="frame" x="0.0" y="585" width="216" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="jQM-qB-DG4">
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" id="jQM-qB-DG4">
                                             <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -321,13 +321,11 @@
             <connections>
                 <outlet property="document" destination="-2" id="a5I-xy-cfp"/>
                 <outlet property="durationLabel" destination="O6Z-Sf-krq" id="arO-5t-2bl"/>
-                <outlet property="durationPrefixLabel" destination="4nr-Ba-E7j" id="F55-HU-3H3"/>
                 <outlet property="logTextField" destination="wdm-7j-KFp" id="OGO-dv-N1L"/>
                 <outlet property="queryButton" destination="R6k-fe-Zfx" id="ghN-fO-X1r"/>
                 <outlet property="queryTextView" destination="o6j-9l-8yj" id="TBp-kK-WsT"/>
                 <outlet property="resultTableView" destination="bEG-JH-5M1" id="9gN-aB-LdW"/>
                 <outlet property="rowcountLabel" destination="jVy-DK-inq" id="d2H-pe-4zf"/>
-                <outlet property="rowcountPrefixLabel" destination="Wie-Qt-rQr" id="vR4-fF-MHB"/>
                 <outlet property="statusLabel" destination="iHT-ra-uUS" id="gaB-QJ-CyS"/>
                 <outlet property="view" destination="OmX-B7-Myx" id="XJY-gA-JEC"/>
             </connections>
@@ -356,16 +354,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="kGk-yn-VwW">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" id="kGk-yn-VwW">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="73Y-QK-YUX">
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" id="73Y-QK-YUX">
                         <rect key="frame" x="454" y="1" width="16" height="109"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView canDrawConcurrently="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-FF-7ex">
+                <scrollView canDrawConcurrently="YES" ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-FF-7ex">
                     <rect key="frame" x="20" y="79" width="471" height="146"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" misplaced="YES" id="9Wj-iF-Gd9">
@@ -382,11 +380,11 @@
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="vrh-Y1-zCt">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="vrh-Y1-zCt">
                         <rect key="frame" x="1" y="1" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ldp-6i-X0Y">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" id="ldp-6i-X0Y">
                         <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -425,7 +423,7 @@ DQ
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="xau-ba-q9b" id="bEG-JH-5M1">
-                                                <rect key="frame" x="0.0" y="0.0" width="471" height="77"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="471" height="162"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -434,11 +432,11 @@ DQ
                                         </subviews>
                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </clipView>
-                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="7FP-vx-BGe">
+                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="7FP-vx-BGe">
                                         <rect key="frame" x="1" y="1" width="0.0" height="16"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
-                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="15V-B2-LCU">
+                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" id="15V-B2-LCU">
                                         <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
@@ -491,37 +489,19 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O6Z-Sf-krq">
-                    <rect key="frame" x="69" y="0.0" width="54" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O6Z-Sf-krq">
+                    <rect key="frame" x="18" y="0.0" width="87" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10000" id="gOy-uy-8VG">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="duration:10000" id="gOy-uy-8VG">
                         <font key="font" size="14" name="BlenderPro-Thin"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-DK-inq">
-                    <rect key="frame" x="185" y="0.0" width="68" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-DK-inq">
+                    <rect key="frame" x="115" y="0.0" width="93" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="W3n-yS-fZV">
-                        <font key="font" size="14" name="BlenderPro-Thin"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4nr-Ba-E7j">
-                    <rect key="frame" x="18" y="0.0" width="53" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="duration:" id="kxD-FA-XaH">
-                        <font key="font" size="14" name="BlenderPro-Thin"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-Qt-rQr">
-                    <rect key="frame" x="127" y="0.0" width="59" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="rowcount:" id="5nX-1F-6gI">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="rowcount:10000" id="W3n-yS-fZV">
                         <font key="font" size="14" name="BlenderPro-Thin"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -529,25 +509,22 @@ DQ
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="baseline" secondItem="Wie-Qt-rQr" secondAttribute="baseline" id="3T9-t6-uxp"/>
                 <constraint firstItem="Nxl-iL-YDc" firstAttribute="leading" secondItem="OmX-B7-Myx" secondAttribute="leading" constant="20" id="3Zw-pa-oug"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="leading" secondItem="Gjy-OM-7TG" secondAttribute="leading" id="4sI-uy-uWC"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="top" secondItem="Wie-Qt-rQr" secondAttribute="top" id="5Of-dp-rlH"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="baseline" secondItem="O6Z-Sf-krq" secondAttribute="baseline" id="Adn-Ww-9Uh"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="top" secondItem="jVy-DK-inq" secondAttribute="top" id="DFb-xc-mLX"/>
                 <constraint firstItem="Gjy-OM-7TG" firstAttribute="trailing" secondItem="R6k-fe-Zfx" secondAttribute="trailing" id="FZa-3z-51R"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="baseline" secondItem="jVy-DK-inq" secondAttribute="baseline" id="J29-da-bTO"/>
+                <constraint firstItem="O6Z-Sf-krq" firstAttribute="leading" secondItem="iHT-ra-uUS" secondAttribute="leading" id="JA6-JX-4Iu"/>
                 <constraint firstItem="Gjy-OM-7TG" firstAttribute="top" secondItem="OmX-B7-Myx" secondAttribute="top" constant="160" id="JBc-5D-NSb"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="top" secondItem="O6Z-Sf-krq" secondAttribute="top" id="Tee-ar-JTK"/>
+                <constraint firstItem="jVy-DK-inq" firstAttribute="leading" secondItem="O6Z-Sf-krq" secondAttribute="trailing" constant="14" id="NtW-CO-rvC"/>
+                <constraint firstItem="jVy-DK-inq" firstAttribute="baseline" secondItem="O6Z-Sf-krq" secondAttribute="baseline" id="R9n-ro-7lT"/>
                 <constraint firstItem="Gjy-OM-7TG" firstAttribute="leading" secondItem="Nxl-iL-YDc" secondAttribute="leading" id="Uux-zi-e1P"/>
                 <constraint firstAttribute="trailing" secondItem="R6k-fe-Zfx" secondAttribute="trailing" constant="20" id="VzQ-nN-39S"/>
                 <constraint firstAttribute="trailing" secondItem="Nxl-iL-YDc" secondAttribute="trailing" constant="20" id="Yl2-ZX-RsX"/>
-                <constraint firstAttribute="bottom" secondItem="4nr-Ba-E7j" secondAttribute="bottom" id="cae-Wx-Jb3"/>
+                <constraint firstAttribute="bottom" secondItem="jVy-DK-inq" secondAttribute="bottom" id="bOv-Xf-dYs"/>
+                <constraint firstItem="O6Z-Sf-krq" firstAttribute="leading" secondItem="Gjy-OM-7TG" secondAttribute="leading" id="cYj-BQ-aRh"/>
                 <constraint firstAttribute="bottom" secondItem="Gjy-OM-7TG" secondAttribute="bottom" constant="20" symbolic="YES" id="kyY-Wv-B0F"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="top" secondItem="Gjy-OM-7TG" secondAttribute="bottom" constant="3" id="mCn-CI-gdi"/>
-                <constraint firstItem="4nr-Ba-E7j" firstAttribute="leading" secondItem="iHT-ra-uUS" secondAttribute="leading" id="obH-Kc-n99"/>
+                <constraint firstItem="jVy-DK-inq" firstAttribute="top" secondItem="O6Z-Sf-krq" secondAttribute="top" id="r7a-ac-b1S"/>
                 <constraint firstItem="Gjy-OM-7TG" firstAttribute="top" secondItem="R6k-fe-Zfx" secondAttribute="bottom" constant="8" symbolic="YES" id="vik-cD-heh"/>
-                <constraint firstItem="O6Z-Sf-krq" firstAttribute="leading" secondItem="4nr-Ba-E7j" secondAttribute="trailing" constant="2" id="wwM-fB-79j"/>
+                <constraint firstItem="O6Z-Sf-krq" firstAttribute="top" secondItem="Gjy-OM-7TG" secondAttribute="bottom" constant="3" id="xc0-XU-23g"/>
+                <constraint firstItem="O6Z-Sf-krq" firstAttribute="leading" secondItem="yUc-FF-7ex" secondAttribute="leading" id="yO2-Kw-A5z"/>
             </constraints>
         </customView>
         <viewController id="Jbr-Lf-Cjo" userLabel="CLuster Overview View Controller" customClass="CLusterOverviewViewController">
