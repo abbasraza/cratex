@@ -13,7 +13,7 @@
 		17F97DE518F5BA9400CF2CC6 /* ClusterSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97DE418F5BA9400CF2CC6 /* ClusterSettingsViewController.m */; };
 		17F97E6F18F5CBA900CF2CC6 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F97E6D18F5CBA900CF2CC6 /* Document.m */; };
 		17F97E7018F5CBA900CF2CC6 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F97E6E18F5CBA900CF2CC6 /* Document.xib */; };
-		6460BB02DAF84C1C93B24A7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B74A8A76064F108D808A9F /* libPods.a */; };
+		1B8C6741DC731F42F3A26B42 /* libPods-cratex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4CA882B6419852E7F0487 /* libPods-cratex.a */; };
 		EB5A37F218F5F29B003169EA /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5A37F118F5F29B003169EA /* QueryViewController.m */; };
 		EB5D901D18F5597B00410BE7 /* tray_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5D901518F5597B00410BE7 /* tray_icon.png */; };
 		EB5D901E18F5597B00410BE7 /* tray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5D901618F5597B00410BE7 /* tray_icon@2x.png */; };
@@ -53,7 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11360EC9E8EC47729D1AB0EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		1736388D18F6E3BA00470BA7 /* CLusterOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLusterOverviewViewController.h; sourceTree = "<group>"; };
 		1736388E18F6E3BA00470BA7 /* CLusterOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLusterOverviewViewController.m; sourceTree = "<group>"; };
 		1736389018F7182900470BA7 /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
@@ -65,7 +64,9 @@
 		17F97E6C18F5CBA900CF2CC6 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		17F97E6D18F5CBA900CF2CC6 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		17F97E6E18F5CBA900CF2CC6 /* Document.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Document.xib; sourceTree = "<group>"; };
-		B4B74A8A76064F108D808A9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C7AA743DF81D66D1B8F4DA3 /* Pods-cratex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cratex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cratex/Pods-cratex.debug.xcconfig"; sourceTree = "<group>"; };
+		A5B4CA882B6419852E7F0487 /* libPods-cratex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cratex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C923819BC74D55995714239E /* Pods-cratex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cratex.release.xcconfig"; path = "Pods/Target Support Files/Pods-cratex/Pods-cratex.release.xcconfig"; sourceTree = "<group>"; };
 		EB5A37F018F5F29B003169EA /* QueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
 		EB5A37F118F5F29B003169EA /* QueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
 		EB5D901518F5597B00410BE7 /* tray_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tray_icon.png; sourceTree = "<group>"; };
@@ -114,7 +115,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB91DF0518F539FF003CF3DE /* Cocoa.framework in Frameworks */,
-				6460BB02DAF84C1C93B24A7B /* libPods.a in Frameworks */,
+				1B8C6741DC731F42F3A26B42 /* libPods-cratex.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +151,15 @@
 				1736389118F7182900470BA7 /* Table.m */,
 			);
 			path = cluster;
+			sourceTree = "<group>";
+		};
+		4161E79BDEF0D508F5A4F7D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C7AA743DF81D66D1B8F4DA3 /* Pods-cratex.debug.xcconfig */,
+				C923819BC74D55995714239E /* Pods-cratex.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		EB5A37EF18F5F267003169EA /* query */ = {
@@ -206,7 +216,7 @@
 				EB91DF2818F539FF003CF3DE /* cratexTests */,
 				EB91DF0318F539FF003CF3DE /* Frameworks */,
 				EB91DF0218F539FF003CF3DE /* Products */,
-				11360EC9E8EC47729D1AB0EE /* Pods.xcconfig */,
+				4161E79BDEF0D508F5A4F7D6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -225,7 +235,7 @@
 				EB91DF0418F539FF003CF3DE /* Cocoa.framework */,
 				EB91DF2318F539FF003CF3DE /* XCTest.framework */,
 				EB91DF0618F539FF003CF3DE /* Other Frameworks */,
-				B4B74A8A76064F108D808A9F /* libPods.a */,
+				A5B4CA882B6419852E7F0487 /* libPods-cratex.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -308,11 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB91DF3218F539FF003CF3DE /* Build configuration list for PBXNativeTarget "cratex" */;
 			buildPhases = (
-				B4E07BBDA88543C1BA297258 /* Check Pods Manifest.lock */,
+				A107683DF4612B2686EFCC6E /* [CP] Check Pods Manifest.lock */,
 				EB91DEFD18F539FF003CF3DE /* Sources */,
 				EB91DEFE18F539FF003CF3DE /* Frameworks */,
 				EB91DEFF18F539FF003CF3DE /* Resources */,
-				2DEB578E0A564FE68C8074DF /* Copy Pods Resources */,
+				782284EB2EEF9E0246E1CA8B /* [CP] Embed Pods Frameworks */,
+				EA815E87223DEC84B315A051 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -408,34 +419,52 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DEB578E0A564FE68C8074DF /* Copy Pods Resources */ = {
+		782284EB2EEF9E0246E1CA8B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cratex/Pods-cratex-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B4E07BBDA88543C1BA297258 /* Check Pods Manifest.lock */ = {
+		A107683DF4612B2686EFCC6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cratex-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA815E87223DEC84B315A051 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cratex/Pods-cratex-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -584,7 +613,7 @@
 		};
 		EB91DF3318F539FF003CF3DE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11360EC9E8EC47729D1AB0EE /* Pods.xcconfig */;
+			baseConfigurationReference = 6C7AA743DF81D66D1B8F4DA3 /* Pods-cratex.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -598,7 +627,7 @@
 		};
 		EB91DF3418F539FF003CF3DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11360EC9E8EC47729D1AB0EE /* Pods.xcconfig */;
+			baseConfigurationReference = C923819BC74D55995714239E /* Pods-cratex.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
